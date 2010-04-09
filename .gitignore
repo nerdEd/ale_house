@@ -1,3 +1,4 @@
 log/
 .bundle/config
 .bundle/environment.rb
+db/development.sqlite3
