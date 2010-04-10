@@ -37,6 +37,8 @@ ActionController::Routing::Routes.draw do |map|
     n.resources :ale_house
   end
   
+  map.resource :user_session
+  map.resource :user
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
