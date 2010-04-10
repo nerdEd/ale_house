@@ -78,7 +78,7 @@ describe AleHousesController, "on GET to :show with a bad id" do
   end
   
   it "should redirect to the index page" do
-    response.should redirect_to(:action => 'index')
+    response.should redirect_to('neighborhood')
   end
 end
 
@@ -102,6 +102,6 @@ describe AleHousesController, "on GET to :edit with a bad id" do
   end
   
   it "should redirect to index" do
-    response.should redirect_to(:action => 'index')
+    response.should redirect_to('neighborhood')
   end
 end
