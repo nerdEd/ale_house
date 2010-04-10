@@ -1,0 +1,12 @@
+!!!
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title
+      = yield :title || 'Ale House'
+    
+    = stylesheet_link_tag 'default'
+
+    = yield :head
+    
+  %body
+    = yield
