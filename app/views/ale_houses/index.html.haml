@@ -1,0 +1,5 @@
+%ul
+  - @houses.each do |house|
+    %li= house.name
+
+= link_to "Add Ale House", new_ale_house_path
