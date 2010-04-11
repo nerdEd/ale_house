@@ -2,4 +2,5 @@ log/
 .bundle/config
 .bundle/environment.rb
 db/development.sqlite3
+db/test.sqlite3
 tmp/
