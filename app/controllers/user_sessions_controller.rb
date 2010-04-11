@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
     @user_session.save do |result|
       if result
         flash[:notice] = "Login successful!"
-        redirect_to root_path
+        redirect_to neighborhoods_path
       else
         render :action => :new
       end

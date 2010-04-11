@@ -1,0 +1,7 @@
+%ul
+  - @neighborhoods.each do |n|
+    %li
+      = link_to n.name, neighborhood_path(@neighborhood)
+
+- if current_user
+  = link_to "Create Neighborhood", new_neighborhood_path
