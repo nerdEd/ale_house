@@ -1,4 +1,5 @@
 require 'oauth'
+require 'authlogic_oauth'
 
 class UserSession < Authlogic::Session::Base
   def self.oauth_consumer
