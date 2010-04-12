@@ -1,6 +1,5 @@
 = content_for :nav do
   %ul
-    %li.selected= link_to 'home', '#', :id => "home"
     - @neighborhoods.each do |n|
       %li= link_to n.name, '#', :id => "neighborhood_#{n.id}"
 
@@ -22,10 +21,6 @@
       map: map,
       icon: 'images/red_flag_30.png',
       title: "Railsconf - at the Baltimore Convention Center"
-    });
-
-    $('#home').click(function(){
-
     });
     
     var neighborhoods = #{@neighborhoods.to_json};
