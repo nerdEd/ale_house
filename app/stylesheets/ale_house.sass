@@ -1,0 +1,46 @@
+!content_divider_color = #D0E89F
+!main_background_color = #F3EBE0
+!nav_background_color = #0C4E80
+!content_background_color = #EDF8C7
+
+body
+  background-color = !main_background_color
+
+#wrapper
+  margin-top: 20px
+  min-height: 800px
+  height: 100%
+  
+#main-content, #nav
+  border-left: 10px solid white
+  border-right: 10px solid white
+  
+#main-content
+  padding-top: 20px
+  padding-bottom: 20px
+  background-color = !content_background_color
+  border-bottom: 10px solid white
+
+#nav
+  padding-top: 20px
+  background-color = !nav_background_color
+  font: 14px Verdana, Tahoma, arial, sans-serif
+  border-top: 10px solid white
+  
+  ul
+    text-align: center
+    list-style: none
+    text-transform: uppercase
+    
+    li
+      display: inline
+      
+      a
+        text-decoration: none
+        color: #FFFFFF
+      
+    li.selected      
+    
+      a
+        text-decoration: none
+        color: #93DAFF

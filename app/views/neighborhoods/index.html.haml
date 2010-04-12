@@ -1,7 +1,28 @@
-%ul
-  - @neighborhoods.each do |n|
-    %li
-      = link_to n.name, neighborhood_path(@neighborhood)
+= content_for :nav do
+  %ul
+    %li.selected= link_to 'home', '#', :id => "home"
+    - @neighborhoods.each do |n|
+      %li= link_to n.name, neighborhood_path(n)
 
-- if current_user
-  = link_to "Create Neighborhood", new_neighborhood_path
+#map_canvas{:style => 'height:400px;width:600px;margin: 0 auto;'}
+
+:javascript
+  $(document).ready(function() {
+    var convention_center = new google.maps.LatLng(39.285685,-76.616936);
+    var neighborhood_center = new google.maps.LatLng(39.283925,-76.597967);
+    var map = new google.maps.Map(document.getElementById("map_canvas"), {
+      zoom: 14,
+      center: neighborhood_center,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    var marker = new google.maps.Marker({
+      position: convention_center, 
+      map: map,
+      icon: 'images/red_flag_30.png',
+      title: "Railsconf - at the Baltimore Convention Center"
+    });
+
+    $('#home').click(function(){
+
+    });
+  });
