@@ -20,7 +20,7 @@ class NeighborhoodsController < ApplicationController
     @neighborhood = Neighborhood.new(params[:neighborhood])
     if @neighborhood.save
       flash[:info] = 'Neighborhood created.'
-      redirect_to neighborhood_index_path
+      redirect_to neighborhoods_path
     else
       render 'new'
     end
