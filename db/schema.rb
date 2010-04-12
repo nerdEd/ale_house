@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(:version => 20100410181514) do
     t.string   "address"
     t.string   "city"
     t.string   "zip"
-    t.integer  "lat"
-    t.integer  "long"
+    t.float    "lat"
+    t.float    "long"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20100410181514) do
   create_table "neighborhoods", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.float    "lat"
+    t.float    "long"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

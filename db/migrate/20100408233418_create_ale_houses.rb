@@ -7,8 +7,8 @@ class CreateAleHouses < ActiveRecord::Migration
       t.string :address
       t.string :city
       t.string :zip
-      t.integer :lat
-      t.integer :long
+      t.float :lat
+      t.float :long
       
       t.timestamps
     end

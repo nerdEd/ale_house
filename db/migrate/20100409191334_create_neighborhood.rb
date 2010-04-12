@@ -3,7 +3,9 @@ class CreateNeighborhood < ActiveRecord::Migration
     create_table :neighborhoods do |t|
       t.string :name
       t.text :description
-            
+      t.float :lat
+      t.float :long
+      
       t.timestamps
     end
   end
