@@ -5,6 +5,8 @@
 
 #map_canvas{:style => 'height:400px;width:600px;margin: 0 auto;'}
 
+#ale_house_listing
+
 :javascript
   $(document).ready(function() {
     var convention_center = new google.maps.LatLng(39.285685,-76.616936);
@@ -30,6 +32,9 @@
       $('#neighborhood_' + neighborhood.id).click(function(){
         $('#nav a').removeClass('selected');
         $(neighborhood_selector).addClass('selected');
+        $.get('neighborhoods/' + neighborhood.id + '/ale_houses', function(data){
+          $('#ale_house_listing').html(data);
+        });        
       })
     });
   });

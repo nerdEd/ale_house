@@ -10,6 +10,7 @@ class AleHousesController < ApplicationController
   
   def index
     @houses = AleHouse.all
+    render :partial => 'list', :locals => {:houses => @houses}
   end
   
   def show
