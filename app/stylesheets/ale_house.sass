@@ -2,6 +2,7 @@
 !main_background_color = #F3EBE0
 !nav_background_color = #0C4E80
 !content_background_color = #EDF8C7
+!border_radius = 10px
 
 body
   background-color = !main_background_color
@@ -20,13 +21,21 @@ body
   padding-bottom: 20px
   background-color = !content_background_color
   border-bottom: 10px solid white
+  -moz-border-radius-bottomleft = !border_radius
+  -webkit-border-bottom-left-radius = !border_radius
+  -moz-border-radius-bottomright = !border_radius
+  -webkit-border-bottom-right-radius = !border_radius
 
 #nav
   padding-top: 20px
   background-color = !nav_background_color
   font: 14px Verdana, Tahoma, arial, sans-serif
   border-top: 10px solid white
-  
+  -moz-border-radius-topleft = !border_radius
+  -webkit-border-top-left-radius = !border_radius
+  -moz-border-radius-topright = !border_radius
+  -webkit-border-top-right-radius = !border_radius
+    
   ul
     text-align: center
     list-style: none
