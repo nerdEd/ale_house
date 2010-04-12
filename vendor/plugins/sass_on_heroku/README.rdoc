@@ -1,0 +1,3 @@
+= DEPRECATED
+
+Please try http://github.com/pedro/hassle
