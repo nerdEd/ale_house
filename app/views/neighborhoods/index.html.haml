@@ -2,7 +2,7 @@
   %ul
     %li.selected= link_to 'home', '#', :id => "home"
     - @neighborhoods.each do |n|
-      %li= link_to n.name, '#', :id => 'neighborhood_#{n.id}'
+      %li= link_to n.name, '#', :id => "neighborhood_#{n.id}"
 
 #map_canvas{:style => 'height:400px;width:600px;margin: 0 auto;'}
 
@@ -10,11 +10,13 @@
   $(document).ready(function() {
     var convention_center = new google.maps.LatLng(39.285685,-76.616936);
     var neighborhood_center = new google.maps.LatLng(39.283925,-76.597967);
+    
     var map = new google.maps.Map(document.getElementById("map_canvas"), {
       zoom: 14,
       center: neighborhood_center,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
+    
     var marker = new google.maps.Marker({
       position: convention_center, 
       map: map,
@@ -24,5 +26,13 @@
 
     $('#home').click(function(){
 
+    });
+    
+    var neighborhoods = #{@neighborhoods.to_json};
+    jQuery.each(neighborhoods, function(){
+      var neighborhood = this.neighborhood;
+      $('#neighborhood_' + neighborhood.id).click(function(){
+        
+      })
     });
   });
