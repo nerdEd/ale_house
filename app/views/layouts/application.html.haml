@@ -14,8 +14,9 @@
     = yield :head
     
   %body
-    #wrapper.container_12
-      #nav.grid_12
+    #wrapper.container_16
+      #nav.grid_12{:style => 'margin-left: 120px;'}
         = yield :nav
-      #main-content.grid_12
+    
+      #main-content.grid_12{:style => 'margin-left: 120px;'}
         = yield
