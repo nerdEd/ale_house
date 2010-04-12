@@ -12,13 +12,13 @@ http://github.com/nerded/grocery_list/tree/master
 
 ### Getting Code and Dependencies
 
-$ git clone git://github.com/nerded/ale_house
-$ cd ale_house
-$ bundle install
+    $ git clone git://github.com/nerded/ale_house
+    $ cd ale_house
+    $ bundle install
 
 ### Running the Tests
 
-$ rake spec
+    $ rake spec
 
 ## Warranty
 
