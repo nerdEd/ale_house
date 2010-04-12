@@ -3,4 +3,5 @@ log/
 .bundle/environment.rb
 db/development.sqlite3
 db/test.sqlite3
+public/stylesheets/compiled/
 tmp/
