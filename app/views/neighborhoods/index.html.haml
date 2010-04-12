@@ -2,7 +2,7 @@
   %ul
     %li.selected= link_to 'home', '#', :id => "home"
     - @neighborhoods.each do |n|
-      %li= link_to n.name, neighborhood_path(n)
+      %li= link_to n.name, '#', :id => 'neighborhood_#{n.id}'
 
 #map_canvas{:style => 'height:400px;width:600px;margin: 0 auto;'}
 
