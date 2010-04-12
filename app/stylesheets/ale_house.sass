@@ -1,20 +1,26 @@
 !content_divider_color = #D0E89F
+!vertical_list_divider = 3px solid !content_divider_color
+
 !main_background_color = #F3EBE0
 !nav_background_color = #0C4E80
 !content_background_color = #EDF8C7
+
 !border_radius = 10px
+!border = 10px solid white
 
 body
   background-color = !main_background_color
-
+  font: 8px Verdana, Tahoma, arial, sans-serif
+  color: #115280
+  
 #wrapper
   margin-top: 20px
   min-height: 800px
   height: 100%
   
 #main-content, #nav
-  border-left: 10px solid white
-  border-right: 10px solid white
+  border-left = !border
+  border-right = !border
   
 #main-content
   padding-top: 20px
@@ -29,8 +35,8 @@ body
 #nav
   padding-top: 20px
   background-color = !nav_background_color
-  font: 14px Verdana, Tahoma, arial, sans-serif
-  border-top: 10px solid white
+  border-top = !border
+  font-size: 14px
   -moz-border-radius-topleft = !border_radius
   -webkit-border-top-left-radius = !border_radius
   -moz-border-radius-topright = !border_radius
@@ -38,12 +44,11 @@ body
     
   ul
     text-align: center
-    list-style: none
     text-transform: uppercase
     
     li
       display: inline
-      margin: 0 10px
+      margin: 0 7px
       
       a
         text-decoration: none
@@ -51,3 +56,18 @@ body
     
       a.selected
         color: #93DAFF
+
+#ale_house_listing
+  padding: 20px 15px
+    
+  li
+    width: 840px
+    font-size: 20px
+    padding: 10px 5px
+    border-bottom = !vertical_list_divider
+  
+  li:first-child
+    border-top = !vertical_list_divider
+    
+ul
+  list-style: none
