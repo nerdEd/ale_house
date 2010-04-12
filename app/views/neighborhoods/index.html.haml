@@ -26,8 +26,10 @@
     var neighborhoods = #{@neighborhoods.to_json};
     jQuery.each(neighborhoods, function(){
       var neighborhood = this.neighborhood;
+      var neighborhood_selector = '#neighborhood_' + neighborhood.id;
       $('#neighborhood_' + neighborhood.id).click(function(){
-        
+        $('#nav a').removeClass('selected');
+        $(neighborhood_selector).addClass('selected');
       })
     });
   });
