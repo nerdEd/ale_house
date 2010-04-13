@@ -9,7 +9,8 @@ class AleHousesController < ApplicationController
                    :finder => 'Neighborhood.find_by_id(params[:neighborhood_id])'
   
   def index
-    render :partial => 'list', :locals => {:houses => @neighborhood.ale_houses}
+    @houses = @neighborhood.ale_houses
+    render :partial => 'list', :locals => {:houses => @houses}
   end
   
   def show
