@@ -9,7 +9,7 @@ $(document).ready(function() {
   });
 
   var marker = new google.maps.Marker({
-    position: convention_center, 
+    position: convention_center,
     map: map,
     icon: 'images/red_flag_30.png',
     title: "Railsconf - at the Baltimore Convention Center"

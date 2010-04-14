@@ -28,6 +28,34 @@ describe NeighborhoodsController, "on GET to :index" do
   end
 end
 
+describe NeighborhoodsController, "using a mobile browser" do
+  integrate_views
+
+  before :each do
+    request.headers['user_agent'] = 'iPhone'
+    get :index    
+  end
+
+  it "should render the mobile layout" do
+    response.should render_template('neighborhoods/index.mobile')
+    # I want two assertions per case. So what; wanna fight about it?
+    response.should_not render_template('neighborhoods/index.html')
+  end
+
+  it "should include the mobile CSS" do
+    response.body.should include("/stylesheets/mobile.css")
+  end
+
+  it "should include the mobile JavaScript library" do
+    response.body.should include("/javascripts/jqtouch.js")
+  end
+
+  it "should include the mobile JavaScript application" do
+    response.body.should include("/javascripts/application.mobile.js")
+  end
+
+end
+
 describe NeighborhoodsController, "on good POST to :create" do
   before :each do
     @previous_count = Neighborhood.count

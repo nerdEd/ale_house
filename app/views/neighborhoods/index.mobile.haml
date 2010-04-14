@@ -1,0 +1,8 @@
+= content_for :nav do
+  %ul
+    - @neighborhoods.each do |n|
+      %li= link_to n.name, neighborhood_ale_houses_path(n), :id => "neighborhood_#{n.id}"
+
+#map_canvas
+
+#ale_house_listing
