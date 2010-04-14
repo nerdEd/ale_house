@@ -1,14 +1,19 @@
 require 'find_or_redirect'
 
 class AleHousesController < ApplicationController
+  before_filter :require_user, :except => [:listing]
   
   find_or_redirect :only => [:show, :destroy, :edit], :redirect_to => 'neighborhoods_path'
-  find_or_redirect :only => [:create, :index], 
+  find_or_redirect :only => [:create, :index, :listing], 
                    :redirect_to => 'neighborhoods_path', 
                    :name => 'neighborhood',
                    :finder => 'Neighborhood.find_by_id(params[:neighborhood_id])'
   
   def index
+    
+  end
+  
+  def listing
     @houses = @neighborhood.ale_houses
     render :partial => 'list', :locals => {:houses => @houses}
   end
