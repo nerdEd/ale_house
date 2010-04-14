@@ -1,13 +1,13 @@
 $(document).ready(function() {
   var convention_center = new google.maps.LatLng(39.285685,-76.616936);
   var neighborhood_center = new google.maps.LatLng(39.283925,-76.597967);
-  
+
   var map = new google.maps.Map(document.getElementById("map_canvas"), {
     zoom: 14,
     center: neighborhood_center,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
-  
+
   var marker = new google.maps.Marker({
     position: convention_center, 
     map: map,
