@@ -1,3 +1,14 @@
-%ul
-  - houses.each do |house|
-    %li= house.name
+%dl
+  - houses.each_with_index do |house, index|
+    %dt= link_to content_tag(:span, "##{index.next}") + house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale-house'
+    %dd 
+      %p
+        Proactively disseminate client-centered sources before synergistic internal or "organic" sources. Appropriately coordinate compelling schemas and B2B alignments. Objectively impact
+        intermandated infrastructures after plug-and-play manufactured products.
+      .toolbar
+        = link_to 'Directions', '', :class => 'map icon'
+        |
+        = link_to 'Website', '', :class => 'website icon'
+        |
+        Locals Who Love It:
+        = link_to 'Ed', 'http://smartlogicsolutions.com/ed'

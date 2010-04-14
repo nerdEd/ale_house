@@ -1,40 +1,8 @@
 = content_for :nav do
   %ul
     - @neighborhoods.each do |n|
-      %li= link_to n.name, '#', :id => "neighborhood_#{n.id}"
+      %li= link_to n.name, neighborhood_ale_houses_path(n), :id => "neighborhood_#{n.id}"
 
-#map_canvas{:style => 'height:400px;width:860px;margin: 0 auto;'}
+#map_canvas
 
 #ale_house_listing
-
-:javascript
-  $(document).ready(function() {
-    var convention_center = new google.maps.LatLng(39.285685,-76.616936);
-    var neighborhood_center = new google.maps.LatLng(39.283925,-76.597967);
-    
-    var map = new google.maps.Map(document.getElementById("map_canvas"), {
-      zoom: 14,
-      center: neighborhood_center,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-    
-    var marker = new google.maps.Marker({
-      position: convention_center, 
-      map: map,
-      icon: 'images/red_flag_30.png',
-      title: "Railsconf - at the Baltimore Convention Center"
-    });
-    
-    var neighborhoods = #{@neighborhoods.to_json};
-    jQuery.each(neighborhoods, function(){
-      var neighborhood = this.neighborhood;
-      var neighborhood_selector = '#neighborhood_' + neighborhood.id;
-      $('#neighborhood_' + neighborhood.id).click(function(){
-        $('#nav a').removeClass('selected');
-        $(neighborhood_selector).addClass('selected');
-        $.get('neighborhoods/' + neighborhood.id + '/ale_houses', function(data){
-          $('#ale_house_listing').html(data);
-        });        
-      })
-    });
-  });

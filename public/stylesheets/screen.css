@@ -1,0 +1,142 @@
+/* Sorry, don't have time to learn SASS =\ */
+body {
+  background:#fff;
+  color:#222;
+  font:12px 'Helvetica Neue', Helvetica, Arial, sans-serif, Tahoma, arial, sans-serif;
+  margin:0;
+  padding:20px 0;
+}
+
+#header .wrap {
+  padding-top:80px;
+  z-index:1;
+}
+
+#logo {
+  background:url(/images/logo.png);
+  display:block;
+  height:103px;
+  left:14px;
+  position:absolute;
+  top:0;
+  width:425px;
+  z-index:2;
+}
+
+#description {
+  font:bold 13px 'Calibiri', 'Helvetica Rounded', 'Helvetica Neue', Helvetica, arial, sans-serif;
+  position:absolute;
+  right:0;
+  text-align:right;
+  top:35px;
+  width:340px;
+}
+
+#nav {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ccc), color-stop(0.5, #9f9f9f), color-stop(0.5, #999), color-stop(1.0, #777));
+  border-top:1px solid #eee;
+  -webkit-border-radius:3px;
+  -webkit-box-shadow:#333 0 2px 4px;
+}
+
+#nav ul {
+  list-style:none;
+  margin:0;
+  overflow:hidden;
+  padding:0;
+  text-align:center;
+}
+
+#nav ul li {
+  display:inline;
+}
+
+#nav ul li a {
+  color:#333;
+  font-weight:bold;
+  font-size:14px;
+  display:inline-block;
+  padding:10px 14px;
+  position:relative;
+  text-decoration:none;
+  text-shadow:#bbb 0 1px 0;
+  z-index:3;
+}
+
+#nav ul li a:hover {
+  background-color:rgba(255, 255, 255, 0.2);
+}
+
+#nav ul li a.selected {
+  background-color:rgba(0, 0, 255, 0.2);
+}
+
+#main-content {
+}
+
+#map_canvas {
+  border:1px solid #999;
+  border-top-width:0;
+  height:400px;
+  margin:0 auto;
+  width:840px;
+  -webkit-border-bottom-left-radius:3px;
+  -webkit-border-bottom-right-radius:3px;
+}
+
+#ale_house_listing {
+  padding:12px;
+}
+
+#ale_house_listing dl {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+#ale_house_listing dl dt a {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ccc), color-stop(0.5, #9f9f9f), color-stop(0.5, #999), color-stop(1.0, #777));
+  color:#333;
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:1px;
+  padding:5px;
+  text-decoration:none;
+  -webkit-border-radius:3px;
+}
+
+#ale_house_listing dl dt a span {
+  color:#000;
+  display:inline-block;
+  margin-right:5px;
+}
+
+#ale_house_listing dl dd {
+  display:none;
+  margin:0;
+  overflow:hidden;
+  padding:10px;
+}
+
+.wrap {
+  margin:0 auto;
+  position:relative;
+  width:860px;
+}
+
+.icon {
+  background-position:left center;
+  background-repeat:no-repeat;
+  display:inline-block;
+  padding-left:20px;
+}
+
+.map.icon {
+  background-image:url(../images/map.png);
+}
+
+
+.website.icon {
+  background-image:url(../images/website.png);
+}
