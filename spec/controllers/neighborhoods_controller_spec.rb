@@ -26,13 +26,17 @@ describe NeighborhoodsController, "on GET to :index" do
   it "should assign to neighborhoods" do
     assigns[:neighborhoods].should_not be_nil
   end
+
+  it "probably shouldn't use the mobile layout like a jackass" do
+    response.should render_template('neighborhoods/index.html')
+  end
 end
 
 describe NeighborhoodsController, "using a mobile browser" do
   integrate_views
 
   before :each do
-    request.headers['user_agent'] = 'iPhone'
+    request.env["HTTP_USER_AGENT"] = 'iPhone'
     get :index    
   end
 
