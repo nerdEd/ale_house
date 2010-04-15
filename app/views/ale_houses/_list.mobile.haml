@@ -1,0 +1,15 @@
+%div{:id => "neighborhood-#{@neighborhood.id}"}
+  .toolbar
+    %a.button.back Back
+    %h1= @neighborhood.name
+  %ul.plastic
+    - houses.each_with_index do |house, index|
+      %li.arrow= link_to house.name, "#ale-house-#{house.id}"
+- houses.each do |house|
+  %div{:id => "ale-house-#{house.id}"}
+    .toolbar
+      %a.button.back Back
+      %h1= house.name
+    %p
+      Dynamically build mission-critical e-commerce after functional synergy. Efficiently leverage other's scalable platforms via team driven sources. Interactively
+      develop interoperable growth strategies with next-generation paradigms.
