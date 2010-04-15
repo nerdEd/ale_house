@@ -5,22 +5,22 @@
       = yield :title || 'Ale House'
     
     = stylesheet_link_tag 'screen', :media => 'screen, projection'
-
     
     = yield :head
     
   %body
-    #wrapper.container_12
+    #wrapper
       #header
         .wrap
           %a#logo{:href => "/"}
           #description
             = link_to "Bmore on Rails", "http://www.bmoreonrails.org"
             approved watering holes, from locals who know better than
-            to drink somewhere lame.
+            to drink somewhere lame. Check it out on 
+            = link_to "github", "http://www.github.com/nerded/ale_house"
           #nav
             = yield :nav
-      #main-content.grid_12.wrap
+      #main-content.wrap
         = yield
 
     / Moved to bottom - JS blocks loading and maps server can be slow
