@@ -15,7 +15,7 @@ class AleHousesController < ApplicationController
   
   def listing
     @houses = @neighborhood.ale_houses
-    render :partial => 'list', :locals => {:houses => @houses}
+    render :partial => 'list', :layout => false, :locals => {:houses => @houses}
   end
   
   def show

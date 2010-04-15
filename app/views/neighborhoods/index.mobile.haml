@@ -1,8 +1,6 @@
-= content_for :nav do
-  %ul
+#home
+  .toolbar
+    %h1 Bmore on Ales
+  %ul.plastic
     - @neighborhoods.each do |n|
-      %li= link_to n.name, neighborhood_ale_houses_path(n), :id => "neighborhood_#{n.id}"
-
-#map_canvas
-
-#ale_house_listing
+      %li.arrow= link_to n.name, listing_neighborhood_ale_houses_path(n)#, :anchor => "neighborhood_#{n.id}")
