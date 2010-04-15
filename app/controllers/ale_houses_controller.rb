@@ -10,7 +10,7 @@ class AleHousesController < ApplicationController
                    :finder => 'Neighborhood.find_by_id(params[:neighborhood_id])'
   
   def index
-    
+    @houses = @neighborhood.ale_houses
   end
   
   def listing
