@@ -14,6 +14,7 @@ class NeighborhoodsController < ApplicationController
   
   def new
     @neighborhood = Neighborhood.new
+    render 'new'
   end
   
   def create

@@ -27,7 +27,8 @@ class AleHousesController < ApplicationController
   end
   
   def new
-    @house = AleHouse.new
+    @house = Neighborhood.new_ale_house(params[:neighborhood_id])
+    render 'new'
   end
   
   def create
@@ -35,7 +36,7 @@ class AleHousesController < ApplicationController
     @house = AleHouse.new(params[:ale_house])
     if @house.save
       flash[:info] = "AleHouse Created"
-      redirect_to neighborhood_path(@house.neighborhood)
+      redirect_to neighborhoods_path
     else      
       render :action => 'new'
     end
