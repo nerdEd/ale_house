@@ -1,0 +1,8 @@
+%h3 Add a neighborhood
+
+- form_for @neighborhood, :url => {:action => :create} do |f|
+  = error_messages_for :neighborhood
+  = render :partial => 'fields', :locals => {:f => f}
+    
+  %p
+    = f.submit "Save"

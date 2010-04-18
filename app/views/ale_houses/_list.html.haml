@@ -1,3 +1,8 @@
+- if current_user then
+  .admin
+    = link_to "Add a neighborhood", new_neighborhood_path()
+    = link_to "Add a #{@neighborhood.name} bar", new_neighborhood_ale_house_path(@neighborhood)
+
 %dl
   - houses.each_with_index do |house, index|
     %dt= link_to content_tag(:span, "##{index.next}") + house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale-house'
