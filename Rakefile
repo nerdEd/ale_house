@@ -8,3 +8,10 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+require 'hydra'
+require 'hydra/tasks'
+
+Hydra::TestTask.new('hydra:spec') do |t|  
+  t.add_files 'spec/**/*_spec.rb'
+end
