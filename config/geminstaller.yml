@@ -27,4 +27,6 @@ gems:
   version: '=0.7.0'
 - name: factory_girl
   version: '=1.2.4'
+- name: hydra
+  version: '=0.16.2'
 <% end %>
