@@ -32,7 +32,8 @@ body {
 }
 
 #nav {
-  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ccc), color-stop(0.5, #9f9f9f), color-stop(0.5, #999), color-stop(1.0, #777));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ccc), color-stop(0.5, #9f9f9f), color-stop(0.5, #999), color-stop(1.0, #777));
+  background: -moz-linear-gradient(top, #CCC 0%, #9F9F9F 50%, #999 50%, #777 100%);
   border-top:1px solid #eee;
   -webkit-border-radius:3px;
   -moz-border-radius:3px;
@@ -98,7 +99,8 @@ body {
 }
 
 #ale_house_listing dl dt a {
-  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ccc), color-stop(0.5, #9f9f9f), color-stop(0.5, #999), color-stop(1.0, #777));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ccc), color-stop(0.5, #9f9f9f), color-stop(0.5, #999), color-stop(1.0, #777));
+  background: -moz-linear-gradient(top, #CCC 0%, #9F9F9F 50%, #999 50%, #777 100%);
   color:#333;
   display:block;
   font-size:12px;
