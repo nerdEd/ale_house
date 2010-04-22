@@ -5,7 +5,8 @@ $(document).ready(function() {
   var map = new google.maps.Map(document.getElementById("map_canvas"), {
     zoom: 14,
     center: neighborhood_center,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    scrollwheel: false
   });
 
   var marker = new google.maps.Marker({
