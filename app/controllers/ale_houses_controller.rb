@@ -55,3 +55,4 @@ class AleHousesController < ApplicationController
   end
 
 end
+

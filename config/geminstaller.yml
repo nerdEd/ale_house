@@ -9,12 +9,8 @@ gems:
   version: '1.2.5'
 - name: find_or_redirect
   version: '=0.2.1'
-- name: authlogic
-  version: '=2.1.3'
-- name: oauth
-  version: '=0.3.6'
-- name: authlogic-oauth
-  version: '=1.0.8'
+- name: twitter_oauth
+  version: '=0.3.3'
 
 <% if ENV['ENV'] && ENV['ENV']=='test' || ENV['ENV']=='all' %>
 - name: rspec
