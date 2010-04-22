@@ -1,4 +1,3 @@
-/* Sorry, don't have time to learn SASS =\ */
 body {
   background:#fff;
   color:#222;
@@ -36,7 +35,9 @@ body {
   background:-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ccc), color-stop(0.5, #9f9f9f), color-stop(0.5, #999), color-stop(1.0, #777));
   border-top:1px solid #eee;
   -webkit-border-radius:3px;
+  -moz-border-radius:3px;
   -webkit-box-shadow:#333 0 2px 4px;
+  -moz-box-shadow:#333 0 2px 4px;
 }
 
 #nav ul {
@@ -81,7 +82,9 @@ body {
   margin:0 auto;
   width:840px;
   -webkit-border-bottom-left-radius:3px;
+  -moz-border-bottom-left-radius:3px;
   -webkit-border-bottom-right-radius:3px;
+  -moz-border-bottom-right-radius:3px;
 }
 
 #ale_house_listing {
@@ -104,6 +107,7 @@ body {
   padding:5px;
   text-decoration:none;
   -webkit-border-radius:3px;
+  -moz-border-radius:3px;
 }
 
 #ale_house_listing dl dt a span {
