@@ -1,4 +1,7 @@
-%h3= "Edit the '#{@house.name}' ale house"
+= content_for :nav do
+  %ul
+    %li= link_to "Editing #{@house.name}", "#"
+    %li= link_to "Cancel", root_path
 
 - form_for @house, :url => {:action => :update} do |f|
   = error_messages_for :house

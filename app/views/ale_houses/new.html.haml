@@ -1,4 +1,7 @@
-%h3= "New #{@house.neighborhood_name} neighborhood ale house"
+= content_for :nav do
+  %ul
+    %li= link_to "New Ale House", "#"
+    %li= link_to "Cancel", root_path
 
 - form_for @house, :url => {:action => :create} do |f|
   = error_messages_for :house
