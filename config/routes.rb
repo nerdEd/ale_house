@@ -37,10 +37,7 @@ ActionController::Routing::Routes.draw do |map|
     n.resources :ale_houses, :collection => {:listing => :get}
   end
   
-  map.resource :user_session
-  map.login "/login", :controller => "user_sessions", :action => "new"
-  map.logout "/logout", :controller => "user_sessions", :action => "destroy"
-  
-  map.resource :user, :only => [:new, :create]
-  map.register '/register', :controller => 'users', :action => 'new'
+  map.login "/login", :controller => "authorizations", :action => "login"
+  map.logout "/logout", :controller => "authorizations", :action => "logout"
+  map.admin "/admin", :controller => "authorizations", :action => "index"
 end

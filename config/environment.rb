@@ -41,3 +41,6 @@ Rails::Initializer.run do |config|
 end
 
 VALID_USERS = %W{nerded bmoreonales}
+
+TWITTER_CONSUMER_KEY = "4N2YlI4nrZbK6uaX43WLdA"
+TWITTER_CONSUMER_SECRET = "L2w9kKl2mE7o8UNVCLb3wAFkFHH8TaKJXl7pnYkYMbs"
