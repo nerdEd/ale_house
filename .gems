@@ -3,4 +3,4 @@ rails --version 2.3.5
 haml --version 2.2.22
 sqlite3-ruby --version 1.2.5
 find_or_redirect --version 0.2.1
-twitter --version 0.9.5
+twitter_oauth --version 0.3.3
