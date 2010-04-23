@@ -60,16 +60,6 @@ describe AleHousesController, "on bad POST to :create" do
   end
 end
 
-describe AleHousesController, "on GET to :show" do
-  before :each do
-    get :show, :id => Factory(:ale_house).id, :neighborhood_id => Factory(:neighborhood).id
-  end
-
-  it "should respond with success" do
-    response.should be_success
-  end
-end
-
 describe AleHousesController, "on GET to :show with a bad id" do
   before :each do
     get :show, :id => -2, :neighborhood_id => Factory(:neighborhood).id
