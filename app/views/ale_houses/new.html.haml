@@ -1,4 +1,5 @@
-%h3= "Add a #{@house.neighborhood_name} bar"
+%h3= "New #{@house.neighborhood_name} neighborhood ale house"
+
 - form_for @house, :url => {:action => :create} do |f|
   = error_messages_for :house
   = render :partial => 'fields', :locals => {:f => f}

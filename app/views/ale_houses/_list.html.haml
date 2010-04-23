@@ -1,12 +1,18 @@
 - if current_user then
   .admin
-    = link_to "Add a neighborhood", new_neighborhood_path()
-    = link_to "Add a #{@neighborhood.name} bar", new_neighborhood_ale_house_path(@neighborhood)
+    = link_to "New '#{@neighborhood.name}' ale house", new_neighborhood_ale_house_path(@neighborhood) 
 
 %dl
   - houses.each_with_index do |house, index|
     %dt= link_to content_tag(:span, "##{index.next}") + house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale-house'
-    %dd 
+    %dd
+      - if current_user then
+        .admin
+          = link_to 'Edit', edit_neighborhood_ale_house_path(@neighborhood, house)
+          |
+          = link_to 'Delete', neighborhood_ale_house_path(@neighborhood, house), :confirm=>"Delete the #{house.name()} ale house?", :method=>'delete'
+
+     
       %p
         Proactively disseminate client-centered sources before synergistic internal or "organic" sources. Appropriately coordinate compelling schemas and B2B alignments. Objectively impact
         intermandated infrastructures after plug-and-play manufactured products.

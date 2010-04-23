@@ -18,14 +18,6 @@ class AleHousesController < ApplicationController
     render :partial => 'list', :layout => false, :locals => {:houses => @houses}
   end
   
-  def show
-    
-  end
-  
-  def edit
-    
-  end
-  
   def new
     @house = Neighborhood.new_ale_house(params[:neighborhood_id])
     render 'new'
@@ -36,9 +28,30 @@ class AleHousesController < ApplicationController
     @house = AleHouse.new(params[:ale_house])
     if @house.save
       flash[:info] = "AleHouse Created"
-      redirect_to neighborhoods_path
+      redirect_to root_path
     else      
       render :action => 'new'
     end
   end
+
+  def edit()
+    @house = AleHouse.find_by_id(params[:id])
+    render 'edit'
+  end
+  
+  def update()
+    house = AleHouse.find_by_id(params[:id])
+    if house.update_attributes!(params[:ale_house]) then
+      flash[:info] = 'Ale House updated.'
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+  
+  def destroy()
+    AleHouse.destroy(params[:id])
+    redirect_to root_path
+  end
+
 end

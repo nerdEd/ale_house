@@ -40,4 +40,4 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
-VALID_USERS = %W{nerded}
+VALID_USERS = %W{nerded bmoreonales}

@@ -1,0 +1,8 @@
+%h3= "Edit the '#{@house.name}' ale house"
+
+- form_for @house, :url => {:action => :update} do |f|
+  = error_messages_for :house
+  = render :partial => 'fields', :locals => {:f => f}
+    
+  %p
+    = f.submit "Save"
