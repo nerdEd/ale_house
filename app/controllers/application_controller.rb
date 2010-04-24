@@ -10,16 +10,16 @@ class ApplicationController < ActionController::Base
     @current_user = current_user
   end
 
-  private 
+  protected 
     def current_user
       session[:user]
     end
 
     def require_user
-      return session[:user]
+      redirect_to root_path if session[:user].nil?
     end
 
     def require_no_user
-      return !session[:user]
+      redirect_to root_path if !session[:user].nil?
     end
 end

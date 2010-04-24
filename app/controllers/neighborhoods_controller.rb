@@ -1,6 +1,7 @@
 require 'find_or_redirect'
 
 class NeighborhoodsController < ApplicationController
+  before_filter :require_user, :except => [:index]
 
   find_or_redirect :only => [:edit, :show]
   
