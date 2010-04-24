@@ -27,6 +27,7 @@ end
 
 describe AleHousesController, "on good POST to :create" do
   before :each do
+    session[:user]= {'screen_name'=>'mary watts'}
     @previous_count = AleHouse.count
     post :create, :ale_house => Factory.attributes_for(:ale_house), :neighborhood_id => Factory(:neighborhood).id
   end
@@ -42,6 +43,7 @@ end
 
 describe AleHousesController, "on bad POST to :create" do
   before :each do
+    session[:user]= {'screen_name'=>'jesse watts'}
     @previous_count = AleHouse.count
     post :create, :ale_house => Factory.attributes_for(:bad_ale_house), :neighborhood_id => Factory(:neighborhood).id
   end
