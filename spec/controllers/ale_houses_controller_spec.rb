@@ -10,6 +10,11 @@ describe AleHousesController, "on GET to :listing" do
   end
 end
 
+describe "with a logged in user" do
+  before :each do
+    controller.stub!(:require_user)
+  end
+
 describe AleHousesController, "on GET to :new" do
   before :each do
     get :new, :neighborhood_id => Factory(:neighborhood).id
@@ -17,16 +22,6 @@ describe AleHousesController, "on GET to :new" do
 
   it "should respond with success" do
     response.should be_success
-  end
-end
-
-describe AleHousesController, "on GET to :index" do
-  before :each do
-    get :index, :neighborhood_id => Factory(:neighborhood).id
-  end
-
-  it "should respond with success" do
-    response.should be_success 
   end
 end
 
@@ -56,36 +51,37 @@ describe AleHousesController, "on bad POST to :create" do
   end
 
   it "shouldn't change the number of Ale Houses" do
-    AleHouse.count.should == @previous_count
-  end
-end
-
-describe AleHousesController, "on GET to :show with a bad id" do
-  before :each do
-    get :show, :id => -2, :neighborhood_id => Factory(:neighborhood).id
+      AleHouse.count.should == @previous_count
+    end
   end
 
-  it "should redirect to the index page" do
-    response.should redirect_to('/neighborhoods')
-  end
-end
+  describe AleHousesController, "on GET to :show with a bad id" do
+    before :each do
+      get :show, :id => -2, :neighborhood_id => Factory(:neighborhood).id
+    end
 
-describe AleHousesController, "on GET to :edit with a good id" do
-  before :each do 
-    get :edit, :id => Factory(:ale_house).id, :neighborhood_id => Factory(:neighborhood).id
-  end
-
-  it "should respond with success" do
-    response.should be_success
-  end
-end
-
-describe AleHousesController, "on GET to :edit with a bad id" do
-  before :each do
-    get :edit, :id => -2, :neighborhood_id => Factory(:neighborhood).id
+    it "should redirect to the index page" do
+      response.should redirect_to('/neighborhoods')
+    end
   end
 
-  it "should redirect to index" do
-    response.should redirect_to('/neighborhoods')
+  describe AleHousesController, "on GET to :edit with a good id" do
+    before :each do 
+      get :edit, :id => Factory(:ale_house).id, :neighborhood_id => Factory(:neighborhood).id
+    end
+
+    it "should respond with success" do
+      response.should be_success
+    end
+  end
+
+  describe AleHousesController, "on GET to :edit with a bad id" do
+    before :each do
+      get :edit, :id => -2, :neighborhood_id => Factory(:neighborhood).id
+    end
+
+    it "should redirect to index" do
+      response.should redirect_to('/neighborhoods')
+    end
   end
 end
