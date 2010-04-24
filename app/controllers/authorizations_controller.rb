@@ -19,11 +19,16 @@ class AuthorizationsController < ApplicationController
       session.delete(:request_token)
       session.delete(:request_token_secret)
       
-      list_members = twitter_client.list_members('nerded', 'bmoreonales')['users'].map{|user_info| user_info['screen_name']}
-      list_members << 'nerded'
-      session[:user] = twitter_client.info if twitter_client.authorized? && list_members.include?(twitter_client.info['screen_name'])
+      if twitter_client.authorized? && list_members(twitter_client).include?(twitter_client.info['screen_name'])
+        session[:user] = twitter_client.info
+      end
+
       redirect_to root_path 
     end
+  end
+
+  def list_members(twitter_client)
+    return twitter_client.list_members(LIST_OWNER, LIST_NAME)['users'].map{|info| info['screen_name'].downcase}
   end
 
   def logout
