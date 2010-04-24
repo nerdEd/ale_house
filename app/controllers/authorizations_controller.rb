@@ -28,7 +28,7 @@ class AuthorizationsController < ApplicationController
   end
 
   def list_members(twitter_client)
-    return twitter_client.list_members(LIST_OWNER, LIST_NAME)['users'].map{|info| info['screen_name'].downcase}
+    return twitter_client.list_members(LIST_OWNER, LIST_NAME)['users'].map{|info| info['screen_name']}
   end
 
   def logout

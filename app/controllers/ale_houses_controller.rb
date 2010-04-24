@@ -24,8 +24,7 @@ class AleHousesController < ApplicationController
   end
   
   def create
-    params[:ale_house][:neighborhood_id] = @neighborhood.id
-    @house = AleHouse.new(params[:ale_house])
+    @house = create_new_ale_house()
     if @house.save
       flash[:info] = "AleHouse Created"
       redirect_to root_path
@@ -54,5 +53,12 @@ class AleHousesController < ApplicationController
     redirect_to root_path
   end
 
+  private
+    def create_new_ale_house()
+      AleHouse.new(params[:ale_house]) do |ale_house|
+        ale_house.neighborhood_id= @neighborhood.id
+        ale_house.created_by= current_user_name()
+      end
+    end
 end
 

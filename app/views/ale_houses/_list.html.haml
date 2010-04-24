@@ -8,15 +8,14 @@
     %dd
      
       %p
-        Proactively disseminate client-centered sources before synergistic internal or "organic" sources. Appropriately coordinate compelling schemas and B2B alignments. Objectively impact
-        intermandated infrastructures after plug-and-play manufactured products.
+        = h( house.description() )
       .toolbar
         = link_to 'Directions', '', :class => 'map icon'
         |
         = link_to 'Website', '', :class => 'website icon'
         |
-        Locals Who Love It:
-        = link_to 'Ed', 'http://smartlogicsolutions.com/ed'
+        Recommended by:
+        = link_to "@#{house.created_by()}", "http://twitter.com/#{house.created_by()}"
 
         - if @current_user
           |

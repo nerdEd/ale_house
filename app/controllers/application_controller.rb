@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
       session[:user]
     end
 
+    def current_user_name()
+      current_user['screen_name']
+    end
+    
     def require_user
       redirect_to root_path if session[:user].nil?
     end
