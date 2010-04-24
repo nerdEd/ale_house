@@ -48,7 +48,7 @@ end
 
 describe "with a user logged in" do
   before :each do
-    controller.stub!(:require_user)
+    session[:user] = {:screen_name => "fake_user", :name => "Fake User"}
   end
 
   describe NeighborhoodsController, "on GET to :new" do
