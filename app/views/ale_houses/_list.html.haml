@@ -13,9 +13,10 @@
         = link_to 'Directions', '', :class => 'map icon'
         |
         = link_to 'Website', '', :class => 'website icon'
-        |
-        Recommended by:
-        = link_to "@#{house.created_by()}", "http://twitter.com/#{house.created_by()}"
+        - if house.created_by
+          |
+          Recommended by:
+          = link_to "@#{house.created_by()}", "http://twitter.com/#{house.created_by()}"
 
         - if @current_user
           |
