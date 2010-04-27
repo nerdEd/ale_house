@@ -20,6 +20,12 @@
             = yield :nav
       #main-content.wrap
         = yield
+        #bottom-nav 
+          %ul
+            %li
+              = link_to "Fork us on github", "http://www.github.com/nerded/ale_house"
+            %li
+              = link_to "Follow us on Twitter", "http://www.twitter.com/bmoreonales"
 
     / Moved to bottom - JS blocks loading and maps server can be slow
     = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'

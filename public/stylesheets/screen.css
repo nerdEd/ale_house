@@ -31,7 +31,7 @@ body {
   width:340px;
 }
 
-#nav {
+#nav, #bottom-nav {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ccc), color-stop(0.5, #9f9f9f), color-stop(0.5, #999), color-stop(1.0, #777));
   background: -moz-linear-gradient(top, #CCC 0%, #9F9F9F 50%, #999 50%, #777 100%);
   border-top:1px solid #eee;
@@ -41,7 +41,8 @@ body {
   -moz-box-shadow:#333 0 2px 4px;
 }
 
-#nav ul {
+#nav ul,
+#bottom-nav ul {
   list-style:none;
   margin:0;
   overflow:hidden;
@@ -49,11 +50,13 @@ body {
   text-align:center;
 }
 
-#nav ul li {
+#nav ul li,
+#bottom-nav ul li {
   display:inline;
 }
 
-#nav ul li a {
+#nav ul li a,
+#bottom-nav ul li a {
   color:#333;
   font-weight:bold;
   font-size:14px;
@@ -65,11 +68,13 @@ body {
   z-index:3;
 }
 
-#nav ul li a:hover {
+#nav ul li a:hover,
+#bottom-nav ul li a:hover {
   background-color:rgba(255, 255, 255, 0.2);
 }
 
-#nav ul li a.selected {
+#nav ul li a.selected,
+#bottom-nav ul li a.selected {
   background-color:rgba(0, 0, 255, 0.2);
 }
 
