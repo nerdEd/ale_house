@@ -10,14 +10,13 @@
       %p
         = h( house.description() )
       .toolbar
-        = link_to 'Directions', '', :class => 'map icon'
-        |
-        = link_to 'Website', '', :class => 'website icon'
+        - if house.url
+          |
+          = link_to 'Website', '', :class => 'website icon'
         - if house.created_by
           |
           Recommended by:
           = link_to "@#{house.created_by()}", "http://twitter.com/#{house.created_by()}"
-
         - if @current_user
           |
           = link_to 'Edit', edit_neighborhood_ale_house_path(@neighborhood, house)
