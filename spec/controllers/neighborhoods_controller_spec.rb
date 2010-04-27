@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'auth_spec_helper'
 
 describe NeighborhoodsController, "on GET to :index" do
   before :each do
@@ -47,11 +48,14 @@ describe NeighborhoodsController, "using a mobile browser" do
 end
 
 describe "with a user logged in" do
+
   before :each do
-    session[:user] = {:screen_name => "fake_user", :name => "Fake User"}
+    login 
   end
 
   describe NeighborhoodsController, "on GET to :new" do
+    integrate_views
+
     before :each do
       get :new
     end
@@ -62,6 +66,13 @@ describe "with a user logged in" do
 
     it "should respond with success" do
       response.should be_success
+    end
+
+    it "should have the correct input fiels" do
+      response.should have_tag("#neighborhood_lat") 
+      response.should have_tag("#neighborhood_long")
+      response.should have_tag("#neighborhood_name")
+      response.should have_tag("#neighborhood_description")
     end
   end
 

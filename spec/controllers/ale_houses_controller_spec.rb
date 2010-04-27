@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'auth_spec_helper'
 
 describe AleHousesController, "on GET to :listing" do
   before :each do
@@ -12,10 +13,12 @@ end
 
 describe "with a logged in user" do
   before :each do
-    session[:user] = {:screen_name => "fake_user", :name => "Fake User"}
+    login 
   end
 
 describe AleHousesController, "on GET to :new" do
+  integrate_views
+
   before :each do
     get :new, :neighborhood_id => Factory(:neighborhood).id
   end
@@ -27,7 +30,7 @@ end
 
 describe AleHousesController, "on good POST to :create" do
   before :each do
-    session[:user]= {'screen_name'=>'mary watts'}
+    login 
     @previous_count = AleHouse.count
     post :create, :ale_house => Factory.attributes_for(:ale_house), :neighborhood_id => Factory(:neighborhood).id
   end

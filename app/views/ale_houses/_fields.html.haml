@@ -2,23 +2,35 @@
   = f.label :name
   %br
   = f.text_field :name
+  %br
+  .subscript The name of the bar/restaurant
 
 %p
   = f.label :description
   %br
   = f.text_area :description, :rows => "10"
+  .subscript Short description. Why should I go here? What's cool about this bar?
 
 %p
   = f.label :address
   %br
   = f.text_field :address
-
+  .subscript Rough address, more accurate is better.
+  
 %p
   = f.label :lat
   %br
   = f.text_field :lat
+  .subscript The latitude of the bar, used for the map on the main page. Use google maps to snag this.
 
 %p
   = f.label :long
   %br
   = f.text_field :long
+  .subscript The longitude of the bar, used for the map on the main page. Use google maps to snag this.
+
+%p
+  = f.label :url
+  %br
+  = f.text_field :url
+  .subscript The website for the bar if it has one.

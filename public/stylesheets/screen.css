@@ -151,3 +151,7 @@ body {
 .website.icon {
   background-image:url(../images/website.png);
 }
+
+.subscript {
+	font-size: x-small;
+}
