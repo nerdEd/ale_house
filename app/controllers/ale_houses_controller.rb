@@ -3,7 +3,7 @@ require 'find_or_redirect'
 class AleHousesController < ApplicationController
   before_filter :require_user, :except => [:listing]
   
-  find_or_redirect :only => [:show, :destroy, :edit], :redirect_to => 'neighborhoods_path'
+  find_or_redirect :except => [:index, :new, :listing, :create], :redirect_to => 'neighborhoods_path'
   find_or_redirect :only => [:create, :index, :listing], 
                    :redirect_to => 'neighborhoods_path', 
                    :name => 'neighborhood',
@@ -39,8 +39,7 @@ class AleHousesController < ApplicationController
   end
   
   def update()
-    house = AleHouse.find_by_id(params[:id])
-    if house.update_attributes!(params[:ale_house]) then
+    if @ale_house.update_attributes!(params[:ale_house]) then
       flash[:info] = 'Ale House updated.'
       redirect_to root_path
     else
@@ -49,7 +48,7 @@ class AleHousesController < ApplicationController
   end
   
   def destroy()
-    AleHouse.destroy(params[:id])
+    AleHouse.destroy(@ale_house.id)
     redirect_to root_path
   end
 
