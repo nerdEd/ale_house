@@ -4,14 +4,16 @@
 
 %dl
   - houses.each_with_index do |house, index|
-    %dt= link_to content_tag(:span, "##{index.next}") + house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale-house'
+    :javascript
+      ale_house_markers["#{@neighborhood.id}_house_position_#{house.id}"] = new google.maps.LatLng("#{house.lat}", "#{house.long}");
+    %dt= link_to content_tag(:span, "##{index.next}") + house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale-house', :id => "#{@neighborhood.id}_house_position_#{house.id}"
     %dd
      
       %p
         = h( house.description() )
       .toolbar
         - if house.url
-          = link_to 'Website', '', :class => 'website icon'
+          = link_to 'Website', house.url, :class => 'website icon'
         - if house.created_by
           |
           Recommended by:
@@ -21,4 +23,3 @@
           = link_to 'Edit', edit_neighborhood_ale_house_path(@neighborhood, house)
           |
           = link_to 'Delete', neighborhood_ale_house_path(@neighborhood, house), :confirm=>"Delete the #{house.name()} ale house?", :method=>'delete' 
-

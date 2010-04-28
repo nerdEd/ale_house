@@ -1,8 +1,13 @@
+var ale_house_markers = {};
+var map;
+var neighborhood_center;
+var current_marker;
+
 $(document).ready(function() {
   var convention_center = new google.maps.LatLng(39.285685,-76.616936);
-  var neighborhood_center = new google.maps.LatLng(39.283925,-76.597967);
-
-  var map = new google.maps.Map(document.getElementById("map_canvas"), {
+	neighborhood_center = new google.maps.LatLng(39.283925,-76.597967);  	
+	
+  map = new google.maps.Map(document.getElementById("map_canvas"), {
     zoom: 14,
     center: neighborhood_center,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -28,6 +33,7 @@ $(document).ready(function() {
       navLinks.removeClass('selected');
       // Select active link and 
       link.addClass('selected');
+			
       $.get(this.href, function(data) {
         listings.html(data).slideDown(function() {
           $('dl dt:first a').click();
@@ -46,7 +52,18 @@ $(document).ready(function() {
       link.addClass('active');
       $('dl dd.active').removeClass('active').animate({height: 0, padding: 0}, function() {
         $(this).css('display', '').css({height: '', padding: ''});
-      });
+      });			
+			if(typeof(current_marker) != 'undefined'){
+				current_marker.setMap(null);
+			}
+			var current_position = ale_house_markers[this.id];
+			current_marker = new google.maps.Marker({
+		    position: current_position,
+		    map: map,
+		    icon: 'images/red_flag_30.png',
+		    title: "Railsconf - at the Baltimore Convention Center"
+		  });
+			map.panTo(current_position);
       link.parents('dt').next().addClass('active').slideDown();
     }
   });
