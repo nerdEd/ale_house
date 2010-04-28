@@ -79,6 +79,7 @@ h2.headline {
   display:inline-block;
   padding:10px 25px;
   text-decoration:none;
+  -moz-border-radius:2px;
   -webkit-border-radius:2px;
 }
 
@@ -89,6 +90,8 @@ h2.headline {
 
 #map_canvas {
   height:400px;
+  -moz-box-shadow:#333 0 3px 6px;
+  -webkit-box-shadow:#333 0 3px 6px;
 }
 
 #footer {
@@ -96,9 +99,11 @@ h2.headline {
   font-weight: normal;
   padding:40px 0 0 0;
 }
+
 #footer hr {
   border-top: 2px #333 solid;
 }
+
 #footer p {
   padding:5px 0 15px 0;
   width:840px;
@@ -109,11 +114,13 @@ h2.headline {
 #upcoming_meetups h2 {
   margin-top:10px;
 }
+
 #upcoming_meetups p {
   text-indent:0;
   padding:5px 0 0 5px;
   margin:0 0 5px 0;
 }
+
 #bmoreonrails_tweets ul.tweet_list li {
   list-style-type:none;
   padding-top:15px;
