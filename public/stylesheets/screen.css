@@ -1,157 +1,148 @@
 body {
-  background:#fff;
-  color:#222;
-  font:12px 'Helvetica Neue', Helvetica, Arial, sans-serif, Tahoma, arial, sans-serif;
-  margin:0;
-  padding:20px 0;
+  background-color:#FFFFFF;
+  color:#333333;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight:bold;
 }
 
-#header .wrap {
-  padding-top:80px;
-  z-index:1;
+p {
+  font-size:13px;
+  font-weight:normal;
 }
 
-#logo {
-  background:url(/images/logo.png);
-  display:block;
-  height:103px;
-  left:14px;
-  position:absolute;
-  top:0;
-  width:425px;
-  z-index:2;
+td {
+  font-size:13px;
+  font-weight:normal;
+}
+
+a { text-decoration:none; }
+a:link { color:#a02529; }
+a:visited { color:#a02529; }
+a:hover { color:#a02529; text-decoration:underline; }
+a:active { color:blue; }
+img { border:0; }
+
+h1,h2,h3 {margin: 10px 0 5px 0;}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1.headline,h2.headline {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color:#a02529;
+  text-shadow: 3px 3px 1px #ddd;
+}
+h2.headline {
+  color:#333;
+  text-shadow: none;
+}
+
+#pageContainer {
+  background:#fff url(../images/logo-overwrite.png) no-repeat left top;
+  margin-left:auto;
+  margin-right:auto;
+  padding-top:191px;
+  position:relative;
+  width:840px;
 }
 
 #description {
-  font:bold 13px 'Calibiri', 'Helvetica Rounded', 'Helvetica Neue', Helvetica, arial, sans-serif;
   position:absolute;
   right:0;
   text-align:right;
-  top:35px;
-  width:340px;
+  top:40px;
+  width:400px;
 }
 
-#nav, #bottom-nav {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ccc), color-stop(0.5, #9f9f9f), color-stop(0.5, #999), color-stop(1.0, #777));
-  background: -moz-linear-gradient(top, #CCC 0%, #9F9F9F 50%, #999 50%, #777 100%);
-  border-top:1px solid #eee;
-  -webkit-border-radius:3px;
-  -moz-border-radius:3px;
-  -webkit-box-shadow:#333 0 2px 4px;
-  -moz-box-shadow:#333 0 2px 4px;
+#nav {
+  margin-bottom:20px;
 }
 
-#nav ul,
-#bottom-nav ul {
-  list-style:none;
+#nav ul {
+  list-style-type:none;
   margin:0;
-  overflow:hidden;
   padding:0;
   text-align:center;
 }
 
-#nav ul li,
-#bottom-nav ul li {
-  display:inline;
-}
-
-#nav ul li a,
-#bottom-nav ul li a {
-  color:#333;
-  font-weight:bold;
-  font-size:14px;
+#nav ul li {
   display:inline-block;
-  padding:10px 14px;
-  position:relative;
-  text-decoration:none;
-  text-shadow:#bbb 0 1px 0;
-  z-index:3;
-}
-
-#nav ul li a:hover,
-#bottom-nav ul li a:hover {
-  background-color:rgba(255, 255, 255, 0.2);
-}
-
-#nav ul li a.selected,
-#bottom-nav ul li a.selected {
-  background-color:rgba(0, 0, 255, 0.2);
-}
-
-#main-content {
-}
-
-#map_canvas {
-  border:1px solid #999;
-  border-top-width:0;
-  height:400px;
-  margin:0 auto;
-  width:840px;
-  -webkit-border-bottom-left-radius:3px;
-  -moz-border-bottom-left-radius:3px;
-  -webkit-border-bottom-right-radius:3px;
-  -moz-border-bottom-right-radius:3px;
-}
-
-#ale_house_listing {
-  padding:12px;
-}
-
-#ale_house_listing dl {
-  list-style:none;
   margin:0;
   padding:0;
 }
 
-#ale_house_listing dl dt a {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ccc), color-stop(0.5, #9f9f9f), color-stop(0.5, #999), color-stop(1.0, #777));
-  background: -moz-linear-gradient(top, #CCC 0%, #9F9F9F 50%, #999 50%, #777 100%);
-  color:#333;
-  display:block;
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:1px;
-  padding:5px;
-  text-decoration:none;
-  -webkit-border-radius:3px;
-  -moz-border-radius:3px;
-}
-
-#ale_house_listing dl dt a span {
+#nav ul li a {
+  background-color:#8fb220;
   color:#000;
   display:inline-block;
-  margin-right:5px;
+  padding:10px 25px;
+  text-decoration:none;
+  -webkit-border-radius:2px;
 }
 
-#ale_house_listing dl dd {
-  display:none;
-  margin:0;
-  overflow:hidden;
-  padding:10px;
-}
-
-.wrap {
+#main-content {
   margin:0 auto;
-  position:relative;
-  width:860px;
+  width:770px;
+}
+
+#map_canvas {
+  height:400px;
+}
+
+#footer {
+  clear: both;
+  font-weight: normal;
+  padding:40px 0 0 0;
+}
+#footer hr {
+  border-top: 2px #333 solid;
+}
+#footer p {
+  padding:5px 0 15px 0;
+  width:840px;
+  text-align:center;
+  margin:10px auto 0 auto;
+}
+
+#upcoming_meetups h2 {
+  margin-top:10px;
+}
+#upcoming_meetups p {
+  text-indent:0;
+  padding:5px 0 0 5px;
+  margin:0 0 5px 0;
+}
+#bmoreonrails_tweets ul.tweet_list li {
+  list-style-type:none;
+  padding-top:15px;
+  font-size:13px;
+  font-weight: normal;
+}
+
+ul.locations {
+  list-style-type:none;
+  margin:10px;
 }
 
 .icon {
   background-position:left center;
   background-repeat:no-repeat;
   display:inline-block;
+  line-height:16px;
   padding-left:20px;
 }
 
-.map.icon {
-  background-image:url(../images/map.png);
+.icon.github {
+  background-image:url(../images/github.png);
 }
 
-
-.website.icon {
-  background-image:url(../images/website.png);
+.icon.twitter {
+  background-image:url(../images/twitter.png);
 }
 
-.subscript {
-	font-size: x-small;
+.quiet {
+  font-size:0.8em;
+  margin-top:1em;
 }

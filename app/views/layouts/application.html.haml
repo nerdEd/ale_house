@@ -8,26 +8,22 @@
     = yield :head
     
   %body
-    #wrapper
-      #header
-        .wrap
-          %a#logo{:href => "/"}
-          #description
-            = link_to "Bmore on Rails", "http://www.bmoreonrails.org"
-            approved watering holes, from locals who know better than
-            to drink somewhere lame.
-          #nav
-            = yield :nav
-      #main-content.wrap
+    #pageContainer
+      .wrap
+        %a#logo{:href => "/"}
+        #description
+          = link_to "Bmore on Rails", "http://www.bmoreonrails.org"
+          approved watering holes, from locals who know better than
+          to drink somewhere lame.
+          .quiet
+            = link_to "Fork us on github", "http://www.github.com/nerded/ale_house", :class => "github icon", :style => "margin-right:1em;"
+            = link_to "Follow us on Twitter", "http://www.twitter.com/bmoreonales", :class => "twitter icon"
+        #nav
+          = yield :nav
+      #main-content
         = yield
-        #bottom-nav 
-          %ul
-            %li
-              = link_to "Fork us on github", "http://www.github.com/nerded/ale_house"
-            %li
-              = link_to "Follow us on Twitter", "http://www.twitter.com/bmoreonales"
 
-    / Moved to bottom - JS blocks loading and maps server can be slow
-    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
-    = javascript_include_tag 'application'
-    %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
+  / Moved to bottom - JS blocks loading and maps server can be slow
+  = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
+  = javascript_include_tag 'application'
+  %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}

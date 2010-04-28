@@ -2,9 +2,10 @@ log/
 .bundle/config
 .bundle/environment.rb
 .DS_Store
+config/database.yml
+config/hydra.yml
+coverage/
 db/development.sqlite3
 db/test.sqlite3
 public/stylesheets/compiled/
 tmp/
-config/database.yml
-config/hydra.yml
