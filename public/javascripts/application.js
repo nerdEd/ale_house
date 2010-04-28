@@ -60,7 +60,7 @@ $(document).ready(function() {
 			current_marker = new google.maps.Marker({
 		    position: current_position,
 		    map: map,
-		    icon: 'images/red_flag_30.png',
+		    icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bar|8fb220',
 		    title: "Railsconf - at the Baltimore Convention Center"
 		  });
 			map.panTo(current_position);
