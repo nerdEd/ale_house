@@ -44,7 +44,7 @@ $(document).ready(function() {
 
   navLinks.filter(':first').click();
 
-  $('.locations a').live('click', function(event) {
+  $('.locations a.ale_house').live('click', function(event) {
     event.preventDefault();
     var link = $(this);
     if (!link.hasClass('active')) {

@@ -1,7 +1,7 @@
 %ul.locations
   - houses.each do |house|    
     %li
-      = link_to house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale-house', :id => "#{@neighborhood.id}_house_position_#{house.id}"
+      = link_to house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale_house', :id => "#{@neighborhood.id}_house_position_#{house.id}"
       %span.subscript
         - if @current_user
           = link_to 'Edit', edit_neighborhood_ale_house_path(@neighborhood, house)
