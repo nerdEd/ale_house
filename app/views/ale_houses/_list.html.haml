@@ -1,24 +1,18 @@
-- if @current_user then
-  .admin
-    = link_to "New '#{@neighborhood.name}' ale house", new_neighborhood_ale_house_path(@neighborhood) 
-
-%dl
-  - houses.each_with_index do |house, index|
-    :javascript
-      ale_house_markers["#{@neighborhood.id}_house_position_#{house.id}"] = new google.maps.LatLng("#{house.lat}", "#{house.long}");
-    %dt= link_to content_tag(:span, "##{index.next}") + house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale-house', :id => "#{@neighborhood.id}_house_position_#{house.id}"
-    %dd
-     
-      %p
-        = h( house.description() )
-      .toolbar
-        = link_to 'Info', "http://google.com/search?q=#{house.name()} #{house.neighborhood_name()} baltimore", :class => 'website icon'
-        - if house.created_by
-          |
-          Recommended by:
-          = link_to "@#{house.created_by()}", "http://twitter.com/#{house.created_by()}"
+%ul.locations
+  - houses.each do |house|    
+    %li
+      = link_to house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale-house', :id => "#{@neighborhood.id}_house_position_#{house.id}"
+      %span.subscript
         - if @current_user
-          |
           = link_to 'Edit', edit_neighborhood_ale_house_path(@neighborhood, house)
           |
-          = link_to 'Delete', neighborhood_ale_house_path(@neighborhood, house), :confirm=>"Delete the #{house.name()} ale house?", :method=>'delete' 
+          = link_to 'Delete', neighborhood_ale_house_path(@neighborhood, house), :confirm=>"Delete the #{house.name()} ale house?", :method=>'delete'
+      .subscript
+        = link_to 'Info', "http://google.com/search?q=#{house.name()} #{house.neighborhood_name()} baltimore", :class => 'website icon'        
+        |
+        = link_to "recommended by", "http://twitter.com/#{house.created_by()}"
+      :javascript
+        ale_house_markers["#{@neighborhood.id}_house_position_#{house.id}"] = new google.maps.LatLng("#{house.lat}", "#{house.long}");
+  - if @current_user
+    %li
+      = link_to "+ New Ale House", new_neighborhood_ale_house_path(@neighborhood) 

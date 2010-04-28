@@ -44,7 +44,7 @@ $(document).ready(function() {
 
   navLinks.filter(':first').click();
 
-  $('dl dt a').live('click', function(event) {
+  $('.locations a').live('click', function(event) {
     event.preventDefault();
     var link = $(this);
     if (!link.hasClass('active')) {

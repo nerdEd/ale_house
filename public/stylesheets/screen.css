@@ -77,7 +77,7 @@ h2.headline {
   background-color:#8fb220;
   color:#000;
   display:inline-block;
-  padding:10px 25px;
+  padding:10px 28px;
   text-decoration:none;
   -moz-border-radius:2px;
   -webkit-border-radius:2px;
@@ -85,11 +85,13 @@ h2.headline {
 
 #main-content {
   margin:0 auto;
-  width:770px;
+  width:860px;
 }
 
 #map_canvas {
   height:400px;
+	width: 650px;
+	float: left;
   -moz-box-shadow:#333 0 3px 6px;
   -webkit-box-shadow:#333 0 3px 6px;
 }
@@ -130,7 +132,19 @@ h2.headline {
 
 ul.locations {
   list-style-type:none;
-  margin:10px;
+	padding: 10px;
+	margin-top: 0px;
+	margin-right: 10px;
+}
+
+ul.locations li {
+	border-top: 1px solid grey;
+	padding: 5px 10px;
+}
+
+ul.locations li:first-child {
+	border-top: none;
+	padding-top: 0px;
 }
 
 .icon {
@@ -152,4 +166,8 @@ ul.locations {
 .quiet {
   font-size:0.8em;
   margin-top:1em;
+}
+
+.subscript {
+	font-size: xx-small;
 }
