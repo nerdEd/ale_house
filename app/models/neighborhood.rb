@@ -1,5 +1,5 @@
 class Neighborhood < ActiveRecord::Base
-  validates_presence_of :name, :lat, :long, :description
+  validates_presence_of :name, :description
   has_many :ale_houses
   
   def self.new_ale_house(id)
