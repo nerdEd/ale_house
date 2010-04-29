@@ -15,6 +15,7 @@
   = f.label :address
   %br
   = f.text_field :address
+  %span.geocode= link_to "Search for address", "#"
   .subscript Street address of the bar/restaurant.
   
 %p
@@ -34,3 +35,17 @@
   %br
   = f.text_field :url
   .subscript The website for the bar if it has one.
+
+= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
+
+:javascript
+  $(document).ready(function() {
+    var geocodingLinks = $(".geocode a");
+    geocodingLinks.click( function(event) {
+    	$.get("#{geocode_path}", {address: $('#ale_house_address')[0].value}, function(data) {
+    		$('#ale_house_lat')[0].value = data.lat;
+    		$('#ale_house_long')[0].value = data.lng;
+    		$('#ale_house_address')[0].value = data.address;
+    	});
+    });
+  });
