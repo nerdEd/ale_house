@@ -27,7 +27,7 @@ class AleHousesController < ApplicationController
     @house = create_new_ale_house()
     if @house.save
       flash[:info] = "AleHouse Created"
-      redirect_to root_path
+      redirect_to root_path + "##{@house.neighborhood.id}"
     else      
       render :action => 'new'
     end

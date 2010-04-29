@@ -24,7 +24,6 @@ $(document).ready(function() {
   var navLinks = $("#nav a"), listings = $('#ale_house_listing').css('overflow', 'hidden');
 
   navLinks.click(function(event) {
-    event.preventDefault();
     var link = $(this);
     if (!link.hasClass('active')) {
       // Hide listings box
@@ -34,7 +33,7 @@ $(document).ready(function() {
       // Select active link and 
       link.addClass('selected');
 			
-      $.get(this.href, function(data) {
+      $.get(this.id, function(data) {
         listings.html(data).slideDown(function() {
           $('dl dt:first a').click();
         });
@@ -42,7 +41,12 @@ $(document).ready(function() {
     }
   });
 
-  navLinks.filter(':first').click();
+	if(window.location.hash) {
+		$('a[href$="' + window.location.hash + '"]').click();
+	}
+	else {
+		navLinks.filter(':first').click();
+	}
 
   $('.locations a.ale_house').live('click', function(event) {
     event.preventDefault();
