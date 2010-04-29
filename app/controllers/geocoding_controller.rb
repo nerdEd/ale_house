@@ -2,7 +2,7 @@ require 'httpclient'
 require 'uri'
 require 'json'
 
-class GeocodingController<ApplicationController
+class GeocodingController < ApplicationController
   
   def geocode()
     address=prepare_address() 
