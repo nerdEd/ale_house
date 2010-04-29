@@ -1,7 +1,6 @@
 require 'httpclient'
 require 'uri'
 require 'json'
-require 'PP'
 
 class GeocodingController<ApplicationController
   
