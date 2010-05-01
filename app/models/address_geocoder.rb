@@ -8,8 +8,9 @@ class AddressGeocoder
     self.new(address).get_location()
   end
   
-  def initialize(address)
+  def initialize(address, service_client=HTTPClient.new)
     @address = address.to_s()
+    @service_client = service_client
   end
   
   def get_location(address=@address)
@@ -24,7 +25,7 @@ class AddressGeocoder
     end
 
     def call_location_service(url)
-      HTTPClient.new.get_content(url)
+      @service_client.get_content(url)
     end
 
     def produce_result(location_data)
