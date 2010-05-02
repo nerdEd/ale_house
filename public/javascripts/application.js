@@ -41,12 +41,8 @@ $(document).ready(function() {
     }
   });
 
-	if(window.location.hash) {
-		$('a[href$="' + window.location.hash + '"]').click();
-	}
-	else {
-		navLinks.filter(':first').click();
-	}
+	var activeNeighborhoodLink = window.location.hash ? $('a[href$="' + window.location.hash + '"]') : navLinks.filter(':first');
+	activeNeighborhoodLink.click();
 
   $('.locations a.ale_house').live('click', function(event) {
     event.preventDefault();
