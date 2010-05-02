@@ -14,11 +14,17 @@ http://github.com/nerded/grocery_list/tree/master
 
     $ git clone git://github.com/nerded/ale_house
     $ cd ale_house
-    $ bundle install
+    $ gem install geminstaller
+    $ ENV=ALL geminstaller 
 
 ### Running the Tests
 
     $ rake spec
+
+### Changes to required gems
+
+* Update geminstaller.yml
+* Update .gems file
 
 ## Warranty
 
