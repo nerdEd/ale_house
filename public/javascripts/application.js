@@ -29,9 +29,9 @@ $(document).ready(function() {
       // Hide listings box
       listings.slideUp();
       // Un-select active links
-      navLinks.removeClass('selected');
+      navLinks.removeClass('active');
       // Select active link and 
-      link.addClass('selected');
+      link.addClass('active');
 			
       $.get(this.id, function(data) {
         listings.html(data).slideDown(function() {
@@ -43,6 +43,7 @@ $(document).ready(function() {
 
 	var activeNeighborhoodLink = window.location.hash ? $('a[href$="' + window.location.hash + '"]') : navLinks.filter(':first');
 	activeNeighborhoodLink.click();
+  activeNeighborhoodLink.addClass('active');
 
   $('.locations a.ale_house').live('click', function(event) {
     event.preventDefault();

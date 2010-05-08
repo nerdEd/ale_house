@@ -83,6 +83,10 @@ h2.headline {
   -webkit-border-radius:2px;
 }
 
+#nav ul li a.active {
+  background-color: #5B7214 !important;
+}
+
 #main-content {
   margin:0 auto;
   width:860px;
