@@ -49,7 +49,7 @@ $(document).ready(function() {
     event.preventDefault();
     var link = $(this);
     if (!link.hasClass('active')) {
-      $('dl a').removeClass('active');
+      $('ul.locations a').removeClass('active');
       link.addClass('active');
       $('dl dd.active').removeClass('active').animate({height: 0, padding: 0}, function() {
         $(this).css('display', '').css({height: '', padding: ''});
