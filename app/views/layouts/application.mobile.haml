@@ -1,16 +1,33 @@
 !!!
 %html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
-    %title
-      = yield :title || 'Ale House'
-    = stylesheet_link_tag 'mobile', :media => 'screen, projection'
-    = yield :head
-  %body
-    = yield :nav
-    = yield
-
-    / Moved to bottom - JS blocks loading and maps server can be slow
-    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
+    %title Ale House
+    = stylesheet_link_tag 'jqtouch', :media => 'screen'
+    = stylesheet_link_tag 'theme', :media => 'screen'
+    = javascript_include_tag 'jquery.1.3.2.min.js'
     = javascript_include_tag 'jqtouch'
-    = javascript_include_tag 'application.mobile.js'
-    %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
+    :javascript
+      var jQT = new $.jQTouch({
+                statusBar: 'black'
+            });
+      $(function(){
+        $('a[target="_blank"]').click(function() {
+          if (confirm('This link opens in a new window.')) {
+            return true;
+          } else {
+            $(this).removeClass('active');
+            return false;
+          }
+        });
+        
+        // Orientation callback event
+        $('body').bind('turn', function(e, data){
+          $('#orient').html('Orientation: ' + data.orientation);
+        });
+      });
+
+    = yield :head
+
+  %body
+    #jqt
+      = yield

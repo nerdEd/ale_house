@@ -1,6 +1,21 @@
-#home
+#home.current
   .toolbar
     %h1 Bmore on Ales
   %ul.plastic
     - @neighborhoods.each do |n|
-      %li.arrow= link_to n.name, listing_neighborhood_ale_houses_path(n)#, :anchor => "neighborhood_#{n.id}")
+      %li.arrow= link_to n.name, "#neighborhood_#{n.id}" 
+
+- @neighborhoods.each do |n|
+  %div{:id => "neighborhood_#{n.id}"}
+    .toolbar
+      %h1= n.name
+      = link_to "Back", "#", :class => 'back'
+    %ul.plastic
+      - n.ale_houses.each do |a|
+        %li.arrow= link_to a.name, "#ale_house_#{a.id}"
+
+  - AleHouse.all.each do |a|
+    %div{:id => "ale_house_#{a.id}"}
+      .toolbar
+        %h1= a.name
+        = link_to "Back", "#", :class => 'back'
