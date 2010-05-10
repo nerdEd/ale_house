@@ -28,11 +28,16 @@ $(document).ready(function() {
     if (!link.hasClass('active')) {
       // Hide listings box
       listings.slideUp();
+
       // Un-select active links
       navLinks.removeClass('active');
+
       // Select active link and 
       link.addClass('active');
-			
+
+      clearMarker();
+			map.panTo(neighborhood_center);
+
       $.get(this.id, function(data) {
         listings.html(data).slideDown(function() {
           $('dl dt:first a').click();
@@ -57,10 +62,7 @@ $(document).ready(function() {
       // Add the description for this ale house to the page
       $('#description_container p').text(ale_houses[this.id]['description'])
 
-      // Remove the last marker from the map
-			if(typeof(current_marker) != 'undefined'){
-				current_marker.setMap(null);
-			}
+      clearMarker();
 
       // Create a marker for the current selection
 			var current_position = ale_houses[this.id]['position'];
@@ -75,4 +77,10 @@ $(document).ready(function() {
 			map.panTo(current_position);
     }
   });
+
+  function clearMarker() {
+    if(typeof(current_marker) != 'undefined'){
+      current_marker.setMap(null);
+    } 
+  }
 });
