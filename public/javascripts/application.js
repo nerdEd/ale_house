@@ -21,7 +21,7 @@ $(document).ready(function() {
     title: "Railsconf - at the Baltimore Convention Center"
   });
 
-  var navLinks = $("#nav a"), listings = $('#ale_house_listing').css('overflow', 'hidden');
+  var navLinks = $("#nav a"), listings = $('#ale_house_listing');
 
   navLinks.click(function(event) {
     var link = $(this);

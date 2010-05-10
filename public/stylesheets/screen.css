@@ -100,6 +100,11 @@ h2.headline {
   -webkit-box-shadow:#333 0 3px 6px;
 }
 
+#ale_house_listing {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
 #footer {
   clear: both;
   font-weight: normal;
