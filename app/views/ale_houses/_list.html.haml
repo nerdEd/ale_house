@@ -15,7 +15,7 @@
         |
         = link_to "recommended by", "http://twitter.com/#{house.created_by()}"
       :javascript
-        ale_house_markers["#{@neighborhood.id}_house_position_#{house.id}"] = new google.maps.LatLng("#{house.lat}", "#{house.long}");
+        ale_houses["#{@neighborhood.id}_house_position_#{house.id}"] = {position: new google.maps.LatLng("#{house.lat}", "#{house.long}"), description: "#{house.description}"};
   - if @current_user
     %li
       = link_to "+ New Ale House", new_neighborhood_ale_house_path(@neighborhood) 

@@ -1,4 +1,4 @@
-var ale_house_markers = {};
+var ale_houses = {};
 var map;
 var neighborhood_center;
 var current_marker;
@@ -49,23 +49,30 @@ $(document).ready(function() {
     event.preventDefault();
     var link = $(this);
     if (!link.hasClass('active')) {
-      $('ul.locations a').removeClass('active');
+
+      // Remove the active class from everyone but the current selection
+      $('ul.locations a.active').removeClass('active');
       link.addClass('active');
-      $('dl dd.active').removeClass('active').animate({height: 0, padding: 0}, function() {
-        $(this).css('display', '').css({height: '', padding: ''});
-      });			
+
+      // Add the description for this ale house to the page
+      $('#description_container p').text(ale_houses[this.id]['description'])
+
+      // Remove the last marker from the map
 			if(typeof(current_marker) != 'undefined'){
 				current_marker.setMap(null);
 			}
-			var current_position = ale_house_markers[this.id];
+
+      // Create a marker for the current selection
+			var current_position = ale_houses[this.id]['position'];
 			current_marker = new google.maps.Marker({
 		    position: current_position,
 		    map: map,
 		    icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bar|8fb220',
 		    title: "Railsconf - at the Baltimore Convention Center"
 		  });
+
+      // Move the map to the new selection
 			map.panTo(current_position);
-      link.parents('dt').next().addClass('active').slideDown();
     }
   });
 });
