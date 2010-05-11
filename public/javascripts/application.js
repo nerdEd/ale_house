@@ -35,6 +35,9 @@ $(document).ready(function() {
       // Select active link and 
       link.addClass('active');
 
+      // Clear any description currently shown
+      $('#description_container p').text('');
+
       clearMarker();
 			map.panTo(neighborhood_center);
 
@@ -60,7 +63,7 @@ $(document).ready(function() {
       link.addClass('active');
 
       // Add the description for this ale house to the page
-      $('#description_container p').text(ale_houses[this.id]['description'])
+      $('#description_container p').text(ale_houses[this.id]['description']);
 
       clearMarker();
 
