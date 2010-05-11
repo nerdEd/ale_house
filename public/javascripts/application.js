@@ -70,7 +70,7 @@ $(document).ready(function() {
 		    position: current_position,
 		    map: map,
 		    icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bar|8fb220',
-		    title: "Railsconf - at the Baltimore Convention Center"
+		    title: link.text() 
 		  });
 
       // Move the map to the new selection
