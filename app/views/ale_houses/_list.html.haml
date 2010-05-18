@@ -1,7 +1,7 @@
 %ul.locations
   - houses.each do |house|    
     %li
-      = link_to house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale_house', :id => "#{@neighborhood.id}_house_position_#{house.id}"
+      = link_to house.name, neighborhood_ale_house_path(@neighborhood, house), :class => 'ale_house', :id => "#{@neighborhood.id}-ale_house_#{house.id}"
       %span.subscript
         - if @current_user
           = link_to 'Edit', edit_neighborhood_ale_house_path(@neighborhood, house)
@@ -15,7 +15,8 @@
         |
         = link_to "recommended by @#{house.created_by}", "http://twitter.com/#{house.created_by()}"
       :javascript
-        ale_houses["#{@neighborhood.id}_house_position_#{house.id}"] = {position: new google.maps.LatLng("#{house.lat}", "#{house.long}"), description: "#{house.description}"};
+        if(!ale_houses["#{@neighborhood.id}"]){ale_houses["#{@neighborhood.id}"] = {};}
+        ale_houses["#{@neighborhood.id}"]["ale_house_#{house.id}"] = {position: new google.maps.LatLng("#{house.lat}", "#{house.long}"), description: "#{house.description}"};
   - if @current_user
     %li
       = link_to "+ New Ale House", new_neighborhood_ale_house_path(@neighborhood) 

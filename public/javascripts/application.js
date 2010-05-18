@@ -39,11 +39,14 @@ $(document).ready(function() {
       $('#description_container p').text('');
 
       clearMarker();
+      removeNeighborhoodMarkers();
 			map.panTo(neighborhood_center);
 
+      var neighborhood_id = this.id.split("/")[2]; 
       $.get(this.id, function(data) {
         listings.html(data).slideDown(function() {
-          $('dl dt:first a').click();
+          // TODO: Holy shit is this brittle
+          dropMarkersForNeighborhood(neighborhood_id);
         });
       });
     }
@@ -63,12 +66,15 @@ $(document).ready(function() {
       link.addClass('active');
 
       // Add the description for this ale house to the page
-      $('#description_container p').text(ale_houses[this.id]['description']);
+      var id_parts = this.id.split("-");
+      var neighborhood_id = id_parts[0];
+      var ale_house_id = id_parts[1];
+      $('#description_container p').text(ale_houses[neighborhood_id][ale_house_id]['description']);
 
       clearMarker();
 
       // Create a marker for the current selection
-			var current_position = ale_houses[this.id]['position'];
+			var current_position = ale_houses[neighborhood_id][ale_house_id]['position'];
 			current_marker = new google.maps.Marker({
 		    position: current_position,
 		    map: map,
@@ -85,5 +91,42 @@ $(document).ready(function() {
     if(typeof(current_marker) != 'undefined'){
       current_marker.setMap(null);
     } 
+  }
+
+  function dropMarkersForNeighborhood(neighborhood_id) {
+    var hoodbars = ale_houses[neighborhood_id];
+    $.each(hoodbars, function(data){
+      var current = ale_houses[neighborhood_id][data];
+      if(current['marker']) {
+        current['marker'].setMap(map);
+      } else {
+        current['marker'] = dropMarkerForPosition(current['position']);
+      }
+    });
+  }
+
+  function removeNeighborhoodMarkers() {
+    $.each(ale_houses, function(data) {
+      removeMarkersForNeighborhood(data);
+    });
+  }
+
+  function removeMarkersForNeighborhood(neighborhood_id) {
+    var hoodbars = ale_houses[neighborhood_id];
+    $.each(hoodbars, function(data){
+      var current = ale_houses[neighborhood_id][data];
+      if(current['marker']) {
+        current['marker'].setMap(null);
+      }
+    });
+  }
+
+  function dropMarkerForPosition(position) {
+    var marker = new google.maps.Marker({
+      position: position,
+      map: map,
+      icon: '/images/red-dot.png'
+    });
+    return marker;
   }
 });
