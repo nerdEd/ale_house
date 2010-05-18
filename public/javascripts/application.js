@@ -2,6 +2,8 @@ var ale_houses = {};
 var map;
 var neighborhood_center;
 var current_marker;
+var my_location;
+var my_location_marker;
 
 $(document).ready(function() {
   var convention_center = new google.maps.LatLng(39.285685,-76.616936);
@@ -20,6 +22,18 @@ $(document).ready(function() {
     icon: 'images/red_flag_30.png',
     title: "Railsconf - at the Baltimore Convention Center"
   });
+
+  if($.geolocation.support()) {
+    $.geolocation.find( function(location) {
+      my_location = new google.maps.LatLng(location.latitude, location.longitude);
+      my_location_marker = new google.maps.Marker({
+        position: my_location,
+        map: map,
+        icon: 'images/red_flag_30.png',
+        title: "You are here"
+      });
+    });
+  }
 
   var navLinks = $("#nav a"), listings = $('#ale_house_listing');
 
