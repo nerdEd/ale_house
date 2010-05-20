@@ -2,9 +2,9 @@ require 'find_or_redirect'
 
 class NeighborhoodsController < ApplicationController
 
-  #before_filter :require_user, :except => [:index]
+  before_filter :require_user, :except => [:index]
 
-  #find_or_redirect :only => [:edit, :show]
+  find_or_redirect :only => [:edit, :show]
   
   def index
     @neighborhoods = Neighborhood.all
