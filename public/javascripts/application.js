@@ -40,9 +40,11 @@ $(document).ready(function() {
 
       clearMarker();
       removeNeighborhoodMarkers();
-			map.panTo(neighborhood_center);
 
       var neighborhood_id = this.id.split("/")[2]; 
+
+      panToNeighborhood(neighborhood_id);
+
       $.get(this.id, function(data) {
         listings.html(data).slideDown(function() {
           // TODO: Holy shit is this brittle
@@ -86,6 +88,18 @@ $(document).ready(function() {
 			map.panTo(current_position);
     }
   });
+
+  function panToNeighborhood(neighborhood_id) {
+      $.getJSON(
+        '/neighborhoods/' + neighborhood_id,
+        null,
+        function(json) {
+                neighborhood_center = new google.maps.LatLng(json.neighborhood.lat,json.neighborhood.long);
+                console.log(neighborhood_center);
+                map.panTo(neighborhood_center);
+        }
+    );
+  }
 
   function clearMarker() {
     if(typeof(current_marker) != 'undefined'){
