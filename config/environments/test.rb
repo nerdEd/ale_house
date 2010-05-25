@@ -29,5 +29,6 @@ config.action_mailer.delivery_method = :test
 
 config.gem 'rspec', :version => '1.2.9', :lib => false unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec'))
 config.gem 'rspec-rails', :version => '1.2.9', :lib => false unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
-
+config.gem 'factory_girl'
+config.gem 'shoulda'
 require 'factory_girl'

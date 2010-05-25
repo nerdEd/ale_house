@@ -34,16 +34,16 @@ describe NeighborhoodsController, "using a mobile browser" do
   end
 
   it "should include the mobile CSS" do
-    response.body.should include("/stylesheets/mobile.css")
+    response.body.should include("/stylesheets/jqtouch.css")
   end
 
   it "should include the mobile JavaScript library" do
     response.body.should include("/javascripts/jqtouch.js")
   end
 
-  it "should include the mobile JavaScript application" do
-    response.body.should include("/javascripts/application.mobile.js")
-  end
+  # it "should include the mobile JavaScript application" do
+  #   response.body.should include("/javascripts/application.mobile.js")
+  # end
 
 end
 
