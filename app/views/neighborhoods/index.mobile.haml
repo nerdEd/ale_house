@@ -19,3 +19,14 @@
       .toolbar
         %h1= a.name
         = link_to "Back", "#", :class => 'back'
+      %ul.plastic
+        %li 
+          Description:
+          %p= a.description
+        %li.arrow
+          = link_to "Map", "http://www.google.com", :rel => 'external'
+        %li.arrow
+          - if a.url.strip != ''
+            = link_to 'More Info', a.url, :rel => 'external'
+          - else
+            = link_to 'More Info', "http://google.com/search?q=#{a.name()} #{a.neighborhood_name()} baltimore", :rel => 'external'
