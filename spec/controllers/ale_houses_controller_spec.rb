@@ -11,51 +11,59 @@ describe AleHousesController, "on GET to :listing" do
   end
 end
 
+describe AleHousesController, "Ed can go fuck himself" do
+  it "in the ass" do
+    get :index
+    assigns[:ale_houses]
+    
+  end
+end
+
 describe "with a logged in user" do
   before :each do
     login 
   end
 
-describe AleHousesController, "on GET to :new" do
-  integrate_views
+  describe AleHousesController, "on GET to :new" do
+    integrate_views
 
-  before :each do
-    get :new, :neighborhood_id => Factory(:neighborhood).id
+    before :each do
+      get :new, :neighborhood_id => Factory(:neighborhood).id
+    end
+
+    it "should respond with success" do
+      response.should be_success
+    end
   end
 
-  it "should respond with success" do
-    response.should be_success
-  end
-end
+  describe AleHousesController, "on good POST to :create" do
+    before :each do
+      login 
+      @previous_count = AleHouse.count
+      post :create, :ale_house => Factory.attributes_for(:ale_house), :neighborhood_id => Factory(:neighborhood).id
+    end
 
-describe AleHousesController, "on good POST to :create" do
-  before :each do
-    login 
-    @previous_count = AleHouse.count
-    post :create, :ale_house => Factory.attributes_for(:ale_house), :neighborhood_id => Factory(:neighborhood).id
-  end
+    it "should redirect" do
+      response.should be_redirect
+    end
 
-  it "should redirect" do
-    response.should be_redirect
-  end
-
-  it "should change the alehouse count" do
-    AleHouse.count.should == @previous_count + 1
-  end
-end
-
-describe AleHousesController, "on bad POST to :create" do
-  before :each do
-    session[:user]= {'screen_name'=>'jesse watts'}
-    @previous_count = AleHouse.count
-    post :create, :ale_house => Factory.attributes_for(:bad_ale_house), :neighborhood_id => Factory(:neighborhood).id
+    it "should change the alehouse count" do
+      AleHouse.count.should == @previous_count + 1
+    end
   end
 
-  it "should respond with success" do
-    response.should be_success
-  end
+  describe AleHousesController, "on bad POST to :create" do
+    before :each do
+      session[:user]= {'screen_name'=>'jesse watts'}
+      @previous_count = AleHouse.count
+      post :create, :ale_house => Factory.attributes_for(:bad_ale_house), :neighborhood_id => Factory(:neighborhood).id
+    end
 
-  it "shouldn't change the number of Ale Houses" do
+    it "should respond with success" do
+      response.should be_success
+    end
+
+    it "shouldn't change the number of Ale Houses" do
       AleHouse.count.should == @previous_count
     end
   end
