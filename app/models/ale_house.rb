@@ -1,3 +1,4 @@
+require 'uri'
 class AleHouse < ActiveRecord::Base
   belongs_to :neighborhood
   default_scope :order => :name
@@ -8,8 +9,12 @@ class AleHouse < ActiveRecord::Base
     neighborhood.name
   end
 
-  def map_url
-    #http://maps.google.com/maps?q=koopers+tavern,Baltimore,Fells+Point,MD&sensor=false
-    "http://maps.google.com/maps?q=#{name},#{neighborhood_name},Baltimore,MD&sensor=false"
+  def map_url()
+    "http://maps.google.com/maps?z=16&q=#{lat}+#{long}+(#{escape_parameters()})&mrt=yp&sensor=false"
   end
+
+  def escape_parameters()
+    URI.escape("#{name.gsub('&', ' and ')} #{address}")
+  end
+
 end
