@@ -26,9 +26,6 @@ $(document).ready(function() {
   navLinks.click(function(event) {
     var link = $(this);
     if (!link.hasClass('active')) {
-      // Hide listings box
-      listings.slideUp();
-
       // Un-select active links
       navLinks.removeClass('active');
 
@@ -45,10 +42,14 @@ $(document).ready(function() {
 
       panToNeighborhood(neighborhood_id);
 
-      $.get(this.id, function(data) {
-        listings.html(data).slideDown(function() {
-          // TODO: Holy shit is this brittle
-          dropMarkersForNeighborhood(neighborhood_id);
+      var id = this.id;
+      listings.fadeOut(function() {
+        $.get(id, function(data) {
+          listings.html(data).fadeOut(function() {
+            // Hide listings box
+            dropMarkersForNeighborhood(neighborhood_id);
+            listings.fadeIn();
+          });
         });
       });
     }
@@ -112,7 +113,7 @@ $(document).ready(function() {
     if (hoodbars = ale_houses[neighborhood_id]) {
       $.each(hoodbars, function(data){
         var current = ale_houses[neighborhood_id][data];
-        if(current['marker']) {
+        if (current['marker']) {
           current['marker'].setMap(map);
         } else {
           current['marker'] = dropMarkerForPosition(current['position']);
