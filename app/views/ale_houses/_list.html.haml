@@ -7,6 +7,8 @@
           = link_to 'Edit', edit_neighborhood_ale_house_path(@neighborhood, house)
           |
           = link_to 'Delete', neighborhood_ale_house_path(@neighborhood, house), :confirm=>"Delete the #{house.name()} ale house?", :method=>'delete'
+          |
+          = link_to "+1", like_neighborhood_ale_house_path(@neighborhood, house)
       .subscript
         - if house.url.strip != ''
           = link_to 'Info', house.url
@@ -14,6 +16,10 @@
           = link_to 'Info', "http://google.com/search?q=#{house.name()} #{house.neighborhood_name()} baltimore"
         |
         = link_to "via @#{house.created_by}", "http://twitter.com/#{house.created_by()}"
+        - unless house.likes.empty?
+          %br 
+          Liked by
+          = house.likes.map(&:created_by).to_sentence
       :javascript
         if(!ale_houses["#{@neighborhood.id}"]){ale_houses["#{@neighborhood.id}"] = {};}
         ale_houses["#{@neighborhood.id}"]["ale_house_#{house.id}"] = {position: new google.maps.LatLng("#{house.lat}", "#{house.long}"), description: "#{house.description}"};

@@ -96,7 +96,6 @@ $(document).ready(function() {
         null,
         function(json) {
                 neighborhood_center = new google.maps.LatLng(json.neighborhood.lat,json.neighborhood.long);
-                // console.log(neighborhood_center);
                 map.panTo(neighborhood_center);
         }
     );

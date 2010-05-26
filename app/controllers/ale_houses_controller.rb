@@ -4,13 +4,22 @@ class AleHousesController < ApplicationController
   before_filter :require_user, :except => [:listing]
   
   find_or_redirect :except => [:index, :new, :listing, :create], :redirect_to => 'neighborhoods_path'
-  find_or_redirect :only => [:create, :index, :listing], 
+  find_or_redirect :only => [:create, :index, :like, :listing], 
                    :redirect_to => 'neighborhoods_path', 
                    :name => 'neighborhood',
                    :finder => 'Neighborhood.find_by_id(params[:neighborhood_id])'
   
   def index
     @houses = @neighborhood.ale_houses
+  end
+  
+  def like
+    if like = Like.find_by_ale_house_id_and_created_by(params[:id], session[:user]['screen_name'])
+      like.destroy
+    else
+      Like.create(:ale_house_id => params[:id], :created_by => session[:user]['screen_name'])
+    end
+    redirect_to root_path(:anchor => @neighborhood.name.parameterize)
   end
   
   def listing
