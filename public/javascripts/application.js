@@ -116,7 +116,7 @@ $(document).ready(function() {
         if (current['marker']) {
           current['marker'].setMap(map);
         } else {
-          current['marker'] = dropMarkerForPosition(current['position']);
+          current['marker'] = dropMarkerForPosition(neighborhood_id, data, current['position']);
         }
       });
     }
@@ -138,11 +138,14 @@ $(document).ready(function() {
     });
   }
 
-  function dropMarkerForPosition(position) {
+  function dropMarkerForPosition(neighborhood_id, ale_house_id, position) {
     var marker = new google.maps.Marker({
       position: position,
       map: map,
       icon: '/images/red-dot.png'
+    });
+    google.maps.event.addListener(marker, 'click', function() {
+      $('#' + neighborhood_id + '-' + ale_house_id).click();
     });
     return marker;
   }
