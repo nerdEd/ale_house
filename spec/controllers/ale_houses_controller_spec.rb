@@ -1,6 +1,17 @@
 require 'spec_helper'
 require 'auth_spec_helper'
 
+describe AleHousesController, "I'm sorry Ed" do
+  it "... seriously" do
+    neighborhood = Factory(:neighborhood)
+    ale_house_2 = Factory(:zerthas, :neighborhood => neighborhood)
+    ale_house = Factory(:ale_house, :neighborhood => neighborhood)
+    get :listing, :neighborhood_id => neighborhood.id
+    assigns[:houses].should == [ale_house, ale_house_2]
+    assigns[:houses].should_not == [ale_house_2, ale_house]
+  end
+end
+
 describe AleHousesController, "on GET to :listing" do
   before :each do
     get :listing, :neighborhood_id => Factory(:neighborhood).id
@@ -8,14 +19,6 @@ describe AleHousesController, "on GET to :listing" do
 
   it "should respond with success" do
     response.should be_success
-  end
-end
-
-describe AleHousesController, "Ed can go fuck himself" do
-  it "in the ass" do
-    get :index
-    assigns[:ale_houses]
-    
   end
 end
 
