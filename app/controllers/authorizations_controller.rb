@@ -1,5 +1,3 @@
-require 'twitter_oauth'
-
 class AuthorizationsController < ApplicationController
 
   def login
