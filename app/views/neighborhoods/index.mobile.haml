@@ -24,7 +24,7 @@
           Description:
           %p= a.description
         %li.arrow
-          = link_to "Map", "http://www.google.com", :rel => 'external'
+          = link_to "Map", a.map_url, :rel => 'external'
         %li.arrow
           - if a.url.strip != ''
             = link_to 'More Info', a.url, :rel => 'external'
