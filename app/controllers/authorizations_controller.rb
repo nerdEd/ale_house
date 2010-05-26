@@ -1,3 +1,5 @@
+require 'oauth'
+
 class AuthorizationsController < ApplicationController
 
   def login
