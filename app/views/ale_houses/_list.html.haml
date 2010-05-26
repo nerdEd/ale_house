@@ -19,7 +19,7 @@
         - unless house.likes.empty?
           %br 
           Liked by
-          = house.likes.map(&:created_by).to_sentence
+          = house.likes.map(&:created_by).map {|u| link_to(u, "http://twitter.com/#{u}")}.to_sentence
       :javascript
         if(!ale_houses["#{@neighborhood.id}"]){ale_houses["#{@neighborhood.id}"] = {};}
         ale_houses["#{@neighborhood.id}"]["ale_house_#{house.id}"] = {position: new google.maps.LatLng("#{house.lat}", "#{house.long}"), description: "#{house.description}"};
