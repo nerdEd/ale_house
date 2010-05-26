@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "neighborhoods", :action => "index"
   
   map.resources :neighborhoods do |n|
-    n.resources :ale_houses, :collection => {:listing => :get}
+    n.resources :ale_houses, :collection => {:listing => :get}, :member => {:like => :get}
   end
   
   map.login "/login", :controller => "authorizations", :action => "login"
