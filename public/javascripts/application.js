@@ -14,7 +14,9 @@ $(document).ready(function() {
     zoom: 14,
     center: neighborhood_center,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    scrollwheel: false
+    scrollwheel: false,
+    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+    mapTypeControl: false
   });
 
   var conf_size = new google.maps.Size(38, 21);
