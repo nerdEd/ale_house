@@ -16,7 +16,7 @@
         = link_to "via @#{house.created_by}", "http://twitter.com/#{house.created_by()}"
       :javascript
         if(!ale_houses["#{@neighborhood.id}"]){ale_houses["#{@neighborhood.id}"] = {};}
-        ale_houses["#{@neighborhood.id}"]["ale_house_#{house.id}"] = {position: new google.maps.LatLng("#{house.lat}", "#{house.long}"), description: "#{house.description}"};
+        ale_houses["#{@neighborhood.id}"]["ale_house_#{house.id}"] = {position: new google.maps.LatLng("#{house.lat}", "#{house.long}"), description: "#{escape_javascript(house.description)}"};
   - if @current_user
     %li
       = link_to "+ New Ale House", new_neighborhood_ale_house_path(@neighborhood) 
