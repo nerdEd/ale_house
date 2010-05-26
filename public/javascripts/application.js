@@ -2,6 +2,7 @@ var ale_houses = {};
 var map;
 var neighborhood_center;
 var current_marker;
+var currentWindow;
 
 $(document).ready(function() {
   var convention_center = new google.maps.LatLng(39.285685,-76.616936);
@@ -72,6 +73,7 @@ $(document).ready(function() {
       var id_parts = this.id.split("-");
       var neighborhood_id = id_parts[0];
       var ale_house_id = id_parts[1];
+
       $('#description_container p').text(ale_houses[neighborhood_id][ale_house_id]['description']);
 
       clearMarker();
@@ -84,6 +86,9 @@ $(document).ready(function() {
 		    icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bar|8fb220',
 		    title: link.text() 
 		  });
+
+      currentWindow = new google.maps.InfoWindow({content: '<p>' + ale_houses[neighborhood_id][ale_house_id]['description'] + '</p>'});
+      currentWindow.open(map, current_marker);
 
       // Move the map to the new selection
 			map.panTo(current_position);
@@ -104,6 +109,7 @@ $(document).ready(function() {
   function clearMarker() {
     if(typeof(current_marker) != 'undefined'){
       current_marker.setMap(null);
+      currentWindow.close();
     } 
   }
 
@@ -137,12 +143,13 @@ $(document).ready(function() {
     });
   }
 
-  function dropMarkerForPosition(neighborhood_id, ale_house_id, position) {
+  function dropMarkerForPosition(neighborhood_id, ale_house_id, position, description) {
     var marker = new google.maps.Marker({
       position: position,
       map: map,
       icon: '/images/red-dot.png'
     });
+
     google.maps.event.addListener(marker, 'click', function() {
       $('#' + neighborhood_id + '-' + ale_house_id).click();
     });
