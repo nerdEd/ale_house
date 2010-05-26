@@ -1,8 +1,8 @@
 require 'spec_helper'
 require 'auth_spec_helper'
 
-describe AleHousesController, "I'm sorry Ed" do
-  it "... seriously" do
+describe AleHousesController, "with alphabetical listing" do
+  it "should, you know, work" do
     neighborhood = Factory(:neighborhood)
     ale_house_2 = Factory(:zerthas, :neighborhood => neighborhood)
     ale_house = Factory(:ale_house, :neighborhood => neighborhood)
@@ -29,6 +29,8 @@ describe "with a logged in user" do
   end
 
   describe AleHousesController, "liking" do
+    integrate_views
+
     before :each do 
       @neighborhood = Factory(:neighborhood)
       @ale_house = Factory(:ale_house, :neighborhood => @neighborhood)
@@ -49,8 +51,8 @@ describe "with a logged in user" do
 
     it "should show me -1 if I've already liked an ale house" do
       @ale_house.likes.create :created_by => session[:user]['screen_name']
-      get :listings, :neighborhood_id => @neighborhood.id
-      response.body.should include(%{<a href="#{like_neighborhood_ale_house_path(neighborhood, ale_house)}">-1</a>})
+      get :listing, :neighborhood_id => @neighborhood.id
+      response.body.should include(%{<a href="#{like_neighborhood_ale_house_path(@neighborhood, @ale_house)}">-1</a>})
     end
 
   end

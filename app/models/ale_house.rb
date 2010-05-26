@@ -7,6 +7,10 @@ class AleHouse < ActiveRecord::Base
   def neighborhood_name
     neighborhood.name
   end
+  
+  def liked_by?(username)
+    !likes.count(:conditions => {:created_by => username}).zero?
+  end
 
   def map_url
     #http://maps.google.com/maps?q=koopers+tavern,Baltimore,Fells+Point,MD&sensor=false

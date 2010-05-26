@@ -2,7 +2,9 @@ var ale_houses = {};
 var map;
 var neighborhood_center;
 var current_marker;
-var currentWindow;
+var currentWindow, currentWindowContent;
+var dummyImage = 'http://dummyimage.com/48x48/eee.gif&text=woof...';
+var image_cache = {};
 
 $(document).ready(function() {
   var convention_center = new google.maps.LatLng(39.285685,-76.616936);
@@ -15,12 +17,26 @@ $(document).ready(function() {
     scrollwheel: false
   });
 
-  var marker = new google.maps.Marker({
+  var conf_size = new google.maps.Size(38, 21);
+  var conf_offset = new google.maps.Point(20, 5);
+  var conf_icon = new google.maps.MarkerImage('/images/railsconf.png', conf_size, null, conf_offset);
+  
+  var conf_shadow_size = new google.maps.Size(49, 21);
+  var conf_shadow_icon = new google.maps.MarkerImage('/images/railsconf-shadow.png', conf_shadow_size, null, conf_offset);
+
+  var conf_marker = new google.maps.Marker({
     position: convention_center,
     map: map,
-    icon: 'images/red_flag_30.png',
+    icon: conf_icon,
+    shadow: conf_shadow_icon,
     title: "Railsconf - at the Baltimore Convention Center"
   });
+
+  // var ignite_latlng = new google.maps.LatLng(39.284772, -76.613181);
+  // var ignite_marker = new google.maps.Marker({
+  //   map: map,
+  //   position: ignite_latlng
+  // });
 
   var navLinks = $("#nav a"), listings = $('#ale_house_listing');
 
@@ -60,6 +76,7 @@ $(document).ready(function() {
 	activeNeighborhoodLink.click();
   activeNeighborhoodLink.addClass('active');
 
+
   $('.locations a.ale_house').live('click', function(event) {
     event.preventDefault();
     var link = $(this);
@@ -86,8 +103,20 @@ $(document).ready(function() {
 		    icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bar|8fb220',
 		    title: link.text() 
 		  });
-
-      currentWindow = new google.maps.InfoWindow({content: '<p>' + ale_houses[neighborhood_id][ale_house_id]['description'] + '</p>'});
+      
+      var ale_house = ale_houses[neighborhood_id][ale_house_id], image_src;
+      if (image_cache[ale_house['created_by']]) {
+        image_src = image_cache[ale_house['created_by']];
+      } else {
+        image_src = dummyImage;
+        $.getScript('http://twitter.com/users/show.json?callback=setTwitterIcon&screen_name=' + ale_house['created_by']);
+      }
+      var image = '<img alt="via ' + ale_house['created_by'] + '" src="' + image_src + '" style="float:left; margin:0 5px 0 0;" width="48" height="48" />';
+      currentWindowContent = image + '<p style="margin-top:5px;">' + ale_house['description'] + '</p>';
+      currentWindow = new google.maps.InfoWindow({
+        content: currentWindowContent,
+        maxWidth: 300
+      });
       currentWindow.open(map, current_marker);
 
       // Move the map to the new selection
@@ -156,3 +185,11 @@ $(document).ready(function() {
     return marker;
   }
 });
+
+function setTwitterIcon(data) {
+  var icon = data['profile_image_url'];
+  if (currentWindow) {
+    image_cache[data['screen_name']] = icon;
+    currentWindow.setContent(currentWindowContent.replace('src="' + dummyImage + '"', 'src="' + icon + '"'));
+  }
+}

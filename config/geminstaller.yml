@@ -9,8 +9,8 @@ gems:
   version: '1.2.5'
 - name: find_or_redirect
   version: '=0.2.1'
-- name: twitter_oauth
-  version: '=0.3.3'
+- name: oauth
+  version: '=0.4.0'
 - name: httpclient
   version: '=2.1.5.2'
   
