@@ -12,11 +12,12 @@ describe AleHousesController, "I'm sorry Ed" do
   end
 end
 
+
 describe AleHousesController, "on GET to :listing" do
   before :each do
     get :listing, :neighborhood_id => Factory(:neighborhood).id
   end
-
+  
   it "should respond with success" do
     response.should be_success
   end
@@ -26,6 +27,34 @@ describe "with a logged in user" do
   before :each do
     login 
   end
+
+  describe AleHousesController, "liking" do
+    before :each do 
+      @neighborhood = Factory(:neighborhood)
+      @ale_house = Factory(:ale_house, :neighborhood => @neighborhood)
+    end
+
+    it "should let me like stuff" do
+      lambda {
+        get :like, :neighborhood_id => @neighborhood.id, :id => @ale_house.id
+      }.should change(@ale_house.likes, :count).by(1)
+    end
+    
+    it "should let me unlike stuff" do
+      @ale_house.likes.create :created_by => session[:user]['screen_name']
+      lambda {
+        get :like, :neighborhood_id => @neighborhood.id, :id => @ale_house.id
+      }.should change(@ale_house.likes, :count).by(-1)
+    end
+
+    it "should show me -1 if I've already liked an ale house" do
+      @ale_house.likes.create :created_by => session[:user]['screen_name']
+      get :listings, :neighborhood_id => @neighborhood.id
+      response.body.should include(%{<a href="#{like_neighborhood_ale_house_path(neighborhood, ale_house)}">-1</a>})
+    end
+
+  end
+
 
   describe AleHousesController, "on GET to :new" do
     integrate_views
