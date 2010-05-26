@@ -95,7 +95,7 @@ $(document).ready(function() {
         null,
         function(json) {
                 neighborhood_center = new google.maps.LatLng(json.neighborhood.lat,json.neighborhood.long);
-                console.log(neighborhood_center);
+                // console.log(neighborhood_center);
                 map.panTo(neighborhood_center);
         }
     );
@@ -108,15 +108,17 @@ $(document).ready(function() {
   }
 
   function dropMarkersForNeighborhood(neighborhood_id) {
-    var hoodbars = ale_houses[neighborhood_id];
-    $.each(hoodbars, function(data){
-      var current = ale_houses[neighborhood_id][data];
-      if(current['marker']) {
-        current['marker'].setMap(map);
-      } else {
-        current['marker'] = dropMarkerForPosition(current['position']);
-      }
-    });
+    var hoodbars;
+    if (hoodbars = ale_houses[neighborhood_id]) {
+      $.each(hoodbars, function(data){
+        var current = ale_houses[neighborhood_id][data];
+        if(current['marker']) {
+          current['marker'].setMap(map);
+        } else {
+          current['marker'] = dropMarkerForPosition(current['position']);
+        }
+      });
+    }
   }
 
   function removeNeighborhoodMarkers() {
