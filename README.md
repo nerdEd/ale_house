@@ -17,6 +17,11 @@ http://github.com/nerded/grocery_list/tree/master
     $ gem install geminstaller
     $ ENV=ALL geminstaller 
 
+### Setting up your database
+    
+    $ rake db:schema:load
+    $ rake db:seed
+
 ### Running the Tests
 
     $ rake spec
